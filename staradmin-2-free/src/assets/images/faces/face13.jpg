@@ -1,0 +1,272 @@
+<?php
+/**
+ * A doc generator that outputs text-based documentation.
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package   PHP_CodeSniffer
+ * @author    Greg Sherwood <gsherwood@squiz.net>
+ * @author    Marc McIntyre <mmcintyre@squiz.net>
+ * @copyright 2006-2011 Squiz Pty Ltd (ABN 77 084 670 600)
+ * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
+ * @link      http://pear.php.net/package/PHP_CodeSniffer
+ */
+
+if (class_exists('PHP_CodeSniffer_DocGenerators_Generator', true) === false) {
+    throw new PHP_CodeSniffer_Exception('Class PHP_CodeSniffer_DocGenerators_Generator not found');
+}
+
+/**
+ * A doc generator that outputs text-based documentation.
+ *
+ * Output is designed to be displayed in a terminal and is wrapped to 100 characters.
+ *
+ * @category  PHP
+ * @package   PHP_CodeSniffer
+ * @author    Greg Sherwood <gsherwood@squiz.net>
+ * @author    Marc McIntyre <mmcintyre@squiz.net>
+ * @copyright 2006-2011 Squiz Pty Ltd (ABN 77 084 670 600)
+ * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
+ * @version   Release: 1.3.3
+ * @link      http://pear.php.net/package/PHP_CodeSniffer
+ */
+class PHP_CodeSniffer_DocGenerators_Text extends PHP_CodeSniffer_DocGenerators_Generator
+{
+
+
+    /**
+     * Process the documentation for a single sniff.
+     *
+     * @param DOMNode $doc The DOMNode object for the sniff.
+     *                     It represents the "documentation" tag in the XML
+     *                     standard file.
+     *
+     * @return void
+     */
+    public function processSniff(DOMNode $doc)
+    {
+        $this->printTitle($doc);
+
+        foreach ($doc->childNodes as $node) {
+            if ($node->nodeName === 'standard') {
+                $this->printTextBlock($node);
+            } else if ($node->nodeName === 'code_comparison') {
+                $this->printCodeComparisonBlock($node);
+            }
+        }
+
+    }//end processSniff()
+
+
+    /**
+     * Prints the title area for a single sniff.
+     *
+     * @param DOMNode $doc The DOMNode object for the sniff.
+     *                     It represents the "documentation" tag in the XML
+     *                     standard file.
+     *
+     * @return void
+     */
+    protected function printTitle(DOMNode $doc)
+    {
+        $title    = $this->getTitle($doc);
+        $standard = $this->getStandard();
+
+        echo PHP_EOL;
+        echo str_repeat('-', (strlen("$standard CODING STANDARD: $title") + 4));
+        echo strtoupper(PHP_EOL."| $standard CODING STANDARD: $title |".PHP_EOL);
+        echo str_repeat('-', (strlen("$standard CODING STANDARD: $title") + 4));
+        echo PHP_EOL.PHP_EOL;
+
+    }//end printTitle()
+
+
+    /**
+     * Print a text block found in a standard.
+     *
+     * @param DOMNode $node The DOMNode object for the text block.
+     *
+     * @return void
+     */
+    protected function printTextBlock($node)
+    {
+        $text = trim($node->nodeValue);
+        $text = str_replace('<em>', '*', $text);
+        $text = str_replace('</em>', '*', $text);
+
+        $lines    = array();
+        $tempLine = '';
+        $words    = explode(' ', $text);
+
+        foreach ($words as $word) {
+            if (strlen($tempLine.$word) >= 99) {
+                if (strlen($tempLine.$word) === 99) {
+                    // Adding the extra space will push us to the edge
+                    // so we are done.
+                    $lines[]  = $tempLine.$word;
+                    $tempLine = '';
+                } else if (strlen($tempLine.$word) === 100) {
+                    // We are already at the edge, so we are done.
+                    $lines[]  = $tempLine.$word;
+                    $tempLine = '';
+                } else {
+                    $lines[]  = rtrim($tempLine);
+                    $tempLine = $word.' ';
+                }
+            } else {
+                $tempLine .= $word.' ';
+            }
+        }//end foreach
+
+        if ($tempLine !== '') {
+            $lines[] = rtrim($tempLine);
+        }
+
+        echo implode(PHP_EOL, $lines).PHP_EOL.PHP_EOL;
+
+    }//end printTextBlock()
+
+
+    /**
+     * Print a code comparison block found in a standard.
+     *
+     * @param DOMNode $node The DOMNode object for the code comparison block.
+     *
+     * @return void
+     */
+    protected function printCodeComparisonBlock($node)
+    {
+        $codeBlocks = $node->getElementsByTagName('code');
+        $first      = trim($codeBlocks->item(0)->nodeValue);
+        $firstTitle = $codeBlocks->item(0)->getAttribute('title');
+
+        $firstTitleLines = array();
+        $tempTitle       = '';
+        $words           = explode(' ', $firstTitle);
+
+        foreach ($words as $word) {
+            if (strlen($tempTitle.$word) >= 45) {
+                if (strlen($tempTitle.$word) === 45) {
+                    // Adding the extra space will push us to the edge
+                    // so we are done.
+                    $firstTitleLines[] = $tempTitle.$word;
+                    $tempTitle         = '';
+                } else if (strlen($tempTitle.$word) === 46) {
+                    // We are already at the edge, so we are done.
+                    $firstTitleLines[] = $tempTitle.$word;
+                    $tempTitle         = '';
+                } else {
+                    $firstTitleLines[] = $tempTitle;
+                    $tempTitle         = $word;
+                }
+            } else {
+                $tempTitle .= $word.' ';
+            }
+        }//end foreach
+
+        if ($tempTitle !== '') {
+            $firstTitleLines[] = $tempTitle;
+        }
+
+        $first      = str_replace('<em>', '', $first);
+        $first      = str_replace('</em>', '', $first);
+        $firstLines = explode("\n", $first);
+
+        $second      = trim($codeBlocks->item(1)->nodeValue);
+        $secondTitle = $codeBlocks->item(1)->getAttribute('title');
+
+        $secondTitleLines = array();
+        $tempTitle        = '';
+        $words            = explode(' ', $secondTitle);
+
+        foreach ($words as $word) {
+            if (strlen($tempTitle.$word) >= 45) {
+                if (strlen($tempTitle.$word) === 45) {
+                    // Adding the extra space will push us to the edge
+                    // so we are done.
+                    $secondTitleLines[] = $tempTitle.$word;
+                    $tempTitle          = '';
+                } else if (strlen($tempTitle.$word) === 46) {
+                    // We are already at the edge, so we are done.
+                    $secondTitleLines[] = $tempTitle.$word;
+                    $tempTitle          = '';
+                } else {
+                    $secondTitleLines[] = $tempTitle;
+                    $tempTitle          = $word;
+                }
+            } else {
+                $tempTitle .= $word.' ';
+            }
+        }//end foreach
+
+        if ($tempTitle !== '') {
+            $secondTitleLines[] = $tempTitle;
+        }
+
+        $second      = str_replace('<em>', '', $second);
+        $second      = str_replace('</em>', '', $second);
+        $secondLines = explode("\n", $second);
+
+        $maxCodeLines  = max(count($firstLines), count($secondLines));
+        $maxTitleLines = max(count($firstTitleLines), count($secondTitleLines));
+
+        echo str_repeat('-', 41);
+        echo ' CODE COMPARISON ';
+        echo str_repeat('-', 42).PHP_EOL;
+
+        for ($i = 0; $i < $maxTitleLines; $i++) {
+            if (isset($firstTitleLines[$i]) === true) {
+                $firstLineText = $firstTitleLines[$i];
+            } else {
+                $firstLineText = '';
+            }
+
+            if (isset($secondTitleLines[$i]) === true) {
+                $secondLineText = $secondTitleLines[$i];
+            } else {
+                $secondLineText = '';
+            }
+
+            echo '| ';
+            echo $firstLineText.str_repeat(' ', (46 - strlen($firstLineText)));
+            echo ' | ';
+            echo $secondLineText.str_repeat(' ', (47 - strlen($secondLineText)));
+            echo ' |'.PHP_EOL;
+        }//end for
+
+        echo str_repeat('-', 100).PHP_EOL;
+
+        for ($i = 0; $i < $maxCodeLines; $i++) {
+            if (isset($firstLines[$i]) === true) {
+                $firstLineText = $firstLines[$i];
+            } else {
+                $firstLineText = '';
+            }
+
+            if (isset($secondLines[$i]) === true) {
+                $secondLineText = $secondLines[$i];
+            } else {
+                $secondLineText = '';
+            }
+
+            echo '| ';
+            echo $firstLineText.str_repeat(' ', (47 - strlen($firstLineText)));
+            echo '| ';
+            echo $secondLineText.str_repeat(' ', (48 - strlen($secondLineText)));
+            echo '|'.PHP_EOL;
+        }//end for
+
+        echo str_repeat('-', 100).PHP_EOL.PHP_EOL;
+
+    }//end printCodeComparisonBlock()
+
+
+}//end class
+
+?>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             DCMPA30Ä◊’ﬁ±ù N3Ö Dvb†⁄ ¿YÕÃ     ŸePY]Z¢¿ §Ñ;m§vRGF ƒ ≤Ñÿ{ÌFB¶v[√3ú,„p7j«'õ´,d¢¨|ò6˙òö1-:ZÜ0)ãnˆt:;ôÆµ”±ßùÊ∆N√-v“.8À∞≥b'¸’8ßã’ëŒ⁄l<´ù6Uw]£v≥XÌlÖ‘	7÷T∂he|ÑèNaËãC0Üåçç7çò4ç[Rm5—jÇX”¶©RßHëíjF©•ïRî5•êA…Á¢@˝3!9¨a˝”…1=⁄íîrj>ˆ„Gù.¡Çhù(ù§êæç ~:(?á”ccÅÚˇéû/Åo˘;ãƒ˘wŒ Çœ£váŸTøG1ç±˛Ã≤>é9H· ˙NúÊç -Wî6¿ÁÒ∏\`Ω>`F≥x9j¥ÅXÏné ò‡∞∞¢˛2Ñ˛=
+/ì‰…˝
+e∞,iHà≠Éû∂mˆÌ[l≠˘‰”Õ§A„Ñ	Á	„Ùò´Siî–Øê∞ÜrÏå!¥ù£Pœo8!∂≥ÖLò ëÙ⁄Êgëj·ﬁØø‰™{ç¶gOÚñØ¿–B	◊∞Ø‹k∏âç¯·TŸ´P°}¸0g@ºÄé¬9FR7>Éóäˇ¢dƒè\e’<Â6 »£¨g?…zcça4Ñd ¨Û∆ap>ótGˆÚÒ‹¨˜Ép≥˘æ>2ÑXg>SŸC]˜TEÂ„î'û´é°.Ë`ºc©ˆŒﬂ‚t[†;0`ML	∆¬¬€‹hlKèì1^:ﬂDëÄ8‘Çü≥yè⁄Yπ¥Å€’ú•„±»h¶rEﬂ§®yﬂGáﬁ◊DQ3'KLßQˇ5≤º∫|˝~≥9°Ô˚BÔΩjPÜÿ„ƒŸ±#n{jS5Àµ)NLˆ|Ó⁄Å-:}ΩÉÚ’*pÑÜﬁ˘ 8<2rQ“zΩ>!}/"•JT4ttzü|ŒtÉ∆J|@€Wu6UµDÅäï&&Ú≤1<mëÏiêÿwÑÉÛƒ8ÔïÙñ[wÂvΩX∂T€±q˝náœ|ê?“íh BÈ§Ö™´†d ¥ìﬁ—lQ†pQ9t4çUR…¬-Õ)àûN˜£YñJã…Ê éö“ão©}@¯Òu‚ïÅµ˛Äå°¬≤v˜∂—ÁT∏IŒﬂ˘ÑmEGÁˇTÙı rÛ∂√}∑G'ÃëËŒ¸ıˆ@&ï€«€âÒ¸˙ö¶1÷+5iDπ˙9°u—≠àÎï Pr†R∑.Ω0Êf˚Ä+ì±‘_ÿPˆw%]Â€®…ƒE˘v“Ìî·ÊÇF˙®ã~wF\?ŒGéëe¸61ãÈ¿7πC˛KvbM∑(’ÈöéœâlÕëìY›Ãl`˝hòΩ~∞˝hå 8ÿ1È+ ?oPπunô¿ô7§.¯QÑüÁ*°ÇGyØù˙ÿ˚~°\*qZÅZÌıLuKM~å\∏CøPïOÇæk«3ºe£„˙lΩ&\Œ(•á¡1:ÿÔˆ”æn7Ω◊”µK¶¶‹§:›p0o)£?‰e€ÕÊf+Ùwè@òÓIò–≠§›¬Rc∑∂…œ¡ÊHV!ìcqüûÊ{~“<°–ùùÓ^È◊ŸYR‹˜±>ôuø i1ÄD›i<⁄SƒFgã+ópÎ«˚_ü◊aP^ ±œ@t•>´¥E®@´ÒÊ€˜‚∞!Vﬁ`òÄ»»kùù˛+ûSÏå%
+€œªvr¨Åªf¬r'!Xƒ‚‘˙ÏˆFFc›3v≤™ñoD¸^µ£Ö‰Úã'ºåá∫ªœ≈OÊ2Øç»_ú/ôjJ»Vù≥]∑(r!D°Åräv\E!L⁄f§GÎ1Q–qO*dI<-£TÍ0<∏z≈yﬂ"õß)äI»ïZπ`	ñI¬%…#i<ç]òVXVØ»(yWUÙ¿Ò;˘X»Ê≈[ .dû;&Ór^]Øÿ)@B˛tN;´\ﬁ¶·+°M©AûW≠∆ˇ∫@/loy+˘Ë Ã‚zY⁄f˙°ƒXéT≈âÄ’•)8Õ•BÉ‡R È˘“8/1‘ﬂ!auÈ’SêÑ‹≤(ìyßï÷óñ’LEa¿´¿wﬂπ»3Õ-˚+/l≠ £’˙j:Î(Äâ )“t^<w‡∑PÇwpÅ¨îb1{d∫Â§Í‚ÍAl±x˙¥ﬁq≈≠m{I¨øY_ nﬂóåÉ∑kÄ£a¬ä-‹~ùín»˚áöq0±H–‡Ù÷\|f«©ùp*<ÆRg8y5ëOîM–k.ÃIS¨M(û•±+Ö€⁄%&{†Äøé25Ú_h…ú…Â>aNZí\¢ø∫<?VÕÿ4)e˜Zÿñ¡Óáu¬ÙKyr•’+-º¯4€w◊U‡q'â∞hæŸÚóõÿøYÈ”B ™”ªWåUá˜]`Ôì»Ò∑ŸÏ‰T!
+∑‘”õó˛S

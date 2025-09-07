@@ -1,0 +1,126 @@
+@media (min-width: 992px) and (max-width: 1199px) {
+    #header nav ul li {
+        padding: 0px 4px;
+    }
+
+    .contact-right {
+        padding-left: 80px!important;
+    }
+
+}
+@media (max-width: 991px) {
+    .banner-section .product-catalog-wrapper img {
+        height: 340px;
+    }
+    .flex-col-reverse {
+        flex-direction: column-reverse;
+    }
+    .image.text-end {
+        text-align: left !important;
+    }
+    .mt-sm-40 {
+        margin-top: 36px !important;
+    }
+    .search-filter-section {
+        padding: 40px 0px;
+    }
+    .search-filter-section .right-dropdwon-sec .search-button {
+        padding: 7.5px 30px;
+    }
+    .image img {
+        width: 100% !important;
+    }
+    .description:last-child {
+        margin-bottom: 0px;
+    }
+    .page-banner-title {
+        height: 160px;
+        font-size: 28px;
+    }
+    section#who-we-are-banner {
+        height: 160px;
+        background-size: cover;
+    }
+    section#who-we-are-banner {
+        height: 160px;
+    }  
+
+    .contact-right {
+        padding-left: 70px!important;
+    }
+
+}
+@media (max-width: 767px) {
+    .search-filter-section .right-dropdwon-sec {
+        flex-wrap: wrap;
+    }
+    .search-filter-section .right-dropdwon-sec .search-button {
+        width: 100%;
+    }
+    .banner-section .banner-content .banner-title {
+        font-size: 32px;
+        margin-bottom: 28px;
+    }
+    .section-sapce, .search-filter-section {
+        padding: 36px 0;
+    }
+    .section-heading {
+        font-size: 28px;
+        margin-bottom: 22px;
+        letter-spacing: 0.2px;
+    }
+    #abouts-us-section .sub-title {
+        font-size: 20px;
+    }
+    .description {
+        font-size: 16px;
+    }
+    .banner-section .slick-next {
+        right: 16px;
+    }
+    .banner-section .slick-prev {
+        left: 16px;
+    }
+    .banner-section .banner-content .row {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+    .container > .row {
+        padding: 0px;
+    }
+    #practice-section .practice-wrapper h4 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        border-bottom: 3px double #00008b;
+        padding: 0 8px 4px;
+    }
+    #practice-section .practice-wrapper ul li {
+        padding: 8px 12px 8px 12px;
+        margin: 8px 0;
+    }
+    .footer-section {
+        padding: 36px 0px 16px;
+    }
+    .footer-section .contact-info, .footer-section .social-media, .footer-section .our-category {
+        padding-top: 28px;
+    }
+    .footer-section .footer-heading {
+        margin-bottom: 12px !important;
+    }
+    .footer-section .copyright {
+        padding-top: 18px;
+        margin-top: 22px;
+    } 
+    #featured-practise .section-heading:before {
+       display: none;
+    }
+
+    .contact-right{padding-left: 12px!important;padding-top: 50px;}
+}
+
+
+@media (max-width: 576px) {
+
+.contact-right{padding-left: 12px!important;padding-top: 50px;}
+
+}
