@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin2 </title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/feather/feather.css">
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+  </head>
+  <body class="with-welcome-text">
+    <div class="container-scroller">
+      <div class="row p-0 m-0 proBanner" id="proBanner">
+        <div class="col-md-12 p-0 m-0">
+          <div class="card-body card-body-padding px-3 d-flex align-items-center justify-content-between">
+            <div class="ps-lg-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="mb-0 fw-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
+                <a href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank" class="btn me-2 buy-now-btn border-0">Buy Now</a>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="https://www.bootstrapdash.com/product/star-admin-pro/"><i class="ti-home me-3 text-white"></i></a>
+              <button id="bannerClose" class="btn border-0 p-0">
+                <i class="ti-close text-white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+          <div class="me-3">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+              <span class="icon-menu"></span>
+            </button>
+          </div>
+          <div>
+            <a class="navbar-brand brand-logo" href="index.html">
+              <img src="assets/images/logo.svg" alt="logo" />
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="index.html">
+              <img src="assets/images/logo-mini.svg" alt="logo" />
+            </a>
+          </div>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-top">
+          <ul class="navbar-nav">
+            <li class="nav-item fw-semibold d-none d-lg-block ms-0">
+              <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+              <h3 class="welcome-sub-text">Your performance summary this week </h3>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown d-none d-lg-block">
+              <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+                <a class="dropdown-item py-3">
+                  <p class="mb-0 fw-medium float-start">Select category</p>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">Bootstrap Bundle </p>
+                    <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">Angular Bundle</p>
+                    <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">VUE Bundle</p>
+                    <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">React Bundle</p>
+                    <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item d-none d-lg-block">
+              <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+                <span class="input-group-addon input-group-prepend border-right">
+                  <span class="icon-calendar input-group-text calendar-icon"></span>
+                </span>
+                <input type="text" class="form-control">
+              </div>
+            </li>
+            <li class="nav-item">
+              <form class="search-form" action="#">
+                <i class="icon-search"></i>
+                <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+              </form>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                <i class="icon-bell"></i>
+                <span class="count"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
+                <a class="dropdown-item py-3 border-bottom">
+                  <p class="mb-0 fw-medium float-start">You have 4 new notifications </p>
+                  <span class="badge badge-pill badge-primary float-end">View all</span>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-alert m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
+                    <p class="fw-light small-text mb-0"> Just now </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-lock-outline m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
+                    <p class="fw-light small-text mb-0"> Private message </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
+                    <p class="fw-light small-text mb-0"> 2 days ago </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="icon-mail icon-lg"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown">
+                <a class="dropdown-item py-3">
+                  <p class="mb-0 fw-medium float-start">You have 7 unread mails </p>
+                  <span class="badge badge-pill badge-primary float-end">View all</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="assets/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">Marian Garner </p>
+                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="assets/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">David Grey </p>
+                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="assets/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis fw-medium text-dark">Travis Jenkins </p>
+                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+              <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle" src="assets/images/faces/face8.jpg" alt="Profile image"> </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="assets/images/faces/face8.jpg" alt="Profile image">
+                  <p class="mb-1 mt-3 fw-semibold">Allen Moreno</p>
+                  <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                </div>
+                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
+                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
+                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-he hal = 249.000000
+2025-06-16 12:20:05,552 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Creating the hal  - done.
+
+2025-06-16 12:20:05,552 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] In.
+2025-06-16 12:20:05,552 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] m_killRequest ==> 0
+2025-06-16 12:20:05,552 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Enumerating device(s) of the hal... 0
+2025-06-16 12:20:05,552 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::GetTimeoutForEnumerateDevicesByGuid] designated timeout => 30000
+2025-06-16 12:20:05,552 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoEnumerateDevices] _hThread = 0x00070c
+2025-06-16 12:20:05,744 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoEnumerateDevices] _ret(00000000)
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Time elapsed for enumerating device(s) of the hal = 194.000000
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Enumerating device(s) of the hal - done.
+
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] The enumerated device count of the hal ==> 0
+
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Rolling back 2 ...
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Rolling back 2 - done.
+
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] ======================= Creating a hal ... 6 =======================
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] In.
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] m_killRequest ==> 0
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] In.
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Target GUID => {D351ED35-CF17-4D9F-8202-E96D07479E1F}
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling DoCreateHal ... 0
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::GetTimeoutForCreateHalByGuid] designated timeout => 30000
+2025-06-16 12:20:05,747 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoCreateHal] _hThread = 0x00070c
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoCreateHal] _ret(00000000)
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling DoCreateHal - done.
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling GetAllDeviceIds...
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling GetAllDeviceIds - done.
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling GetAllInterfaceGuids...
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling GetAllInterfaceGuids - done.
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Out.
+
+2025-06-16 12:20:05,754 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Time elapsed for creating the hal = 10.000000
+2025-06-16 12:20:05,757 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Creating the hal  - done.
+
+2025-06-16 12:20:05,757 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] In.
+2025-06-16 12:20:05,757 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] m_killRequest ==> 0
+2025-06-16 12:20:05,757 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Enumerating device(s) of the hal... 0
+2025-06-16 12:20:05,757 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::GetTimeoutForEnumerateDevicesByGuid] designated timeout => 20000
+2025-06-16 12:20:05,757 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoEnumerateDevices] _hThread = 0x00070c
+2025-06-16 12:20:05,762 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoEnumerateDevices] _ret(00000000)
+2025-06-16 12:20:05,762 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Time elapsed for enumerating device(s) of the hal = 10.000000
+2025-06-16 12:20:05,762 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Enumerating device(s) of the hal - done.
+
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] The enumerated device count of the hal ==> 0
+
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Rolling back 2 ...
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Rolling back 2 - done.
+
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] ======================= Creating a hal ... 7 =======================
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] In.
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] m_killRequest ==> 0
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] In.
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Target GUID => {E1120EAD-71E1-48C8-91CD-C405A22F8B7C}
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling DoCreateHal ... 0
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::GetTimeoutForCreateHalByGuid] designated timeout => 20000
+2025-06-16 12:20:05,767 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoCreateHal] _hThread = 0x00070c
+2025-06-16 12:20:08,388 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::FinalConstruct] In.
+2025-06-16 12:20:08,388 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::FinalConstruct] cs initialize.
+2025-06-16 12:20:08,388 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::FinalConstruct] Out.
+2025-06-16 12:20:13,603 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceCap] cs_initialized(1), before cs In.
+
+2025-06-16 12:20:13,605 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceCap] In.
+
+2025-06-16 12:20:13,605 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::IsRogAuraDeviceManagerInitialized] Checking RogAuraDeviceManager initailization state...
+
+2025-06-16 12:20:16,504 aurals_3.07.54_5568_8084 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceStatus] cs_initialized(1), before cs In.
+
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoCreateHal] _ret(00000000)
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Calling DoCreateHal - done.
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::CreateHal] Out.
+
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Time elapsed for creating the hal = 15809.000000
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Creating the hal  - done.
+
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] In.
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] m_killRequest ==> 0
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Enumerating device(s) of the hal... 0
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::GetTimeoutForEnumerateDevicesByGuid] designated timeout => 20000
+2025-06-16 12:20:21,569 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoEnumerateDevices] _hThread = 0x00070c
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::DoEnumerateDevices] _ret(00000000)
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Time elapsed for enumerating device(s) of the hal = 3870.000000
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Enumerating device(s) of the hal - done.
+
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] The enumerated device count of the hal ==> 1
+
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] In.
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckKillRequestState] m_killRequest ==> 0
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Initializing device(s) of the hal...
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] In.
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] Checking whether the current AURA SDK supports SetCallbackFunction() or not ...
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] _hr(00000000)
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] &funcObj(0x20ec1e0)
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] *** Calling SetCallbackFunction() ... ***
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] In.
+2025-06-16 12:20:25,444 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] _profile = <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<root>
+    <wdl_state>
+        <device key="0">
+            <name>LAPTOP-8CFGGC2H</name>
+            <index>0</index>
+            <type>WDL_NB_KB_4ZONE_RGB_LIGHTING</type>
+            <id>0B0519B6</id>
+            <base_container_id>0</base_container_id>
+            <status>1</status>
+        </device>
+    </wdl_state>
+</root>
+
+2025-06-16 12:20:25,446 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] *** Calling CoCreateInstance() ... ***
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] *** After calling CoCreateInstance(), _hr(00000000) ***
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] *** Calling OnDeviceNotify() ... ***
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [ServiceMediator][CServiceMediator::OnDeviceNotify] Acquiring device notify mutex ...
+
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [ServiceMediator][CServiceMediator::OnDeviceNotify] In.
+
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [ServiceMediator][CServiceMediator::OnDeviceNotify] *** Calling Fire_OnDeviceNotify() ... ***
+
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] In.
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] profile =>
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<root>
+    <wdl_state>
+        <device key="0">
+            <name>LAPTOP-8CFGGC2H</name>
+            <index>0</index>
+            <type>WDL_NB_KB_4ZONE_RGB_LIGHTING</type>
+            <id>0B0519B6</id>
+            <base_container_id>0</base_container_id>
+            <status>1</status>
+        </device>
+    </wdl_state>
+</root>
+
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] ==============================
+2025-06-16 12:20:25,448 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] _hThread = 0x00070c
+2025-06-16 12:20:25,449 aurals_3.07.54_5568_13184 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify][Thread] In.
+2025-06-16 12:20:25,449 aurals_3.07.54_5568_13184 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify][Thread] _threadData->_pConnection => 0x277bd2c
+2025-06-16 12:20:25,451 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] _ret(00000000)
+2025-06-16 12:20:25,451 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] ==============================
+2025-06-16 12:20:25,451 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] _hThread = 0x00070c
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_16832 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify][Thread] In.
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_16832 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify][Thread] _threadData->_pConnection => 0x277bce4
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] _ret(00000000)
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [_IServiceMediatorEvents_CP][CProxy_IServiceMediatorEvents::Fire_OnDeviceNotify] Out.
+
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [ServiceMediator][CServiceMediator::OnDeviceNotify] *** Calling Fire_OnDeviceNotify() - done. ***
+
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [ServiceMediator][CServiceMediator::OnDeviceNotify] Out.
+
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] *** After calling OnDeviceNotify(), _hr(00000000) ***
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] *** Device notification from a device issued. ***
+
+2025-06-16 12:20:25,452 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][LightingService_CBFunc] Out.
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] *** After calling SetCallbackFunction(), _hr(00000000) ***
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::AACDeviceAdapter] Out.
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::DoInitialize] In.
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::DoInitialize] cap.m_controllerLedCount  = 1
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AACDeviceAdapter][AACDeviceAdapter::DoInitialize] Out.
+
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Initializing a device of the hal : type ==> 0x0f7eff - done.
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateLightDevice] EnumerateLightDevice type : 0x0f7eff
+2025-06-16 12:20:25,454 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::IsKeyboardInput] IsKeyboardInputSupported = 0
+2025-06-16 12:20:25,456 aurals_3.07.54_5568_8064 - [AacDeviceImp][IsThermalSupported] check IsThermalSupported = 1
+2025-06-16 12:20:25,456 aurals_3.07.54_5568_8064 - [AuSignalProvider] Initial ThermalSensor signal provider.
+2025-06-16 12:20:25,456 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Initializing device(s) of the hal - done.
+2025-06-16 12:20:25,456 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Time elapsed for initializing device(s) of the hal = 11.000000
+
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] mtype: 86016
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] mgeneration: 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] mmodel_name: DISPLAY 1
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] mtype: 1015551
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] mgeneration: 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] mmodel_name: LAPTOP-8CFGGC2H
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Total time elapsed for enumerating hal(s)/creating hal(s)/enumerating device(s)/initializing device(s) = 20959.000000
+
+
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] m_isDeviceConfigDirty = 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][DeviceScanner::EnumerateByParameter] Out.
+
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][LedConnecter::LedConnecter] Hue:
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [HueController][HueController::Create] In.
+
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [HueController][HueController::Create] Out.
+
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][LedConnecter::LedConnecter] AacDevices:
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][LedConnecter::LedConnecter] Out.
+
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] In.
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Mainboard_Master
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Mainboard_Slave
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Vga
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Keyboard
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Mouse
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> GSkillDram
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> RogAudioDevices_Microphone
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> RogDisplay
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> AddressableStrip
+2025-06-16 12:20:25,457 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> RogAudioDevices_Headset
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> ODD
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> HDD
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> HUE
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> NB_Keyboard
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Projecter
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Desktop
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> NB_Keyboard_LED
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Terminal
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WaterCooler
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Extension_Card
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> NUC
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MousePad
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Add_RGB_CARD
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> RogAudioDevices_HeadphoneStand
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Lamp
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> EXT_SSD
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> M2_SSD
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> NOTEBOOK_CHASSIS
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> RogAudioDevices_AudioAdapter
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> EXTERNAL_GENERAL
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MidiBox
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> 5Z_Keyboard
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WallPaper
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 1
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MATRIX_Headset
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MATRIX_Motherboard
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MATRIX_Keyboard
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MATRIX_Laptop
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MATRIX_Watercooler
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> L_Strip
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> PHONE
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,459 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> GAMEPAD
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Xiaomi_device
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> MB_AniMe_Matrix
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WaterCooler_Anime_Matrix
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Router
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> Video Capture Box
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Undefined
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Keyboard
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Mouse
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_GameController
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Peripheral
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Scene
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Notification
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Chassis
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Wearable
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Furniture
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Art
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Headset
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> SLASH_Laptop
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_NB_KB_RGB_LIGHTING
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_NB_KB_4ZONE_RGB_LIGHTING
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 1
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> LightBar
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Microphone
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_Speaker
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> CONTROL_KNOB
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> XGMobile
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_id ==> WDL_ConsoleController
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] device_existence ==> 0
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::GetAuraControllers] Out.
+
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::SetInGroupLedAtUILedKey] In.
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::SetInGroupLedAtUILedKey] Out.
+
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::SetAuraLeds] In.
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::SetAuraLeds] Out.
+
+2025-06-16 12:20:25,461 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::Set_XYZ] In.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::Set_XYZ] Out.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraController][IndexConvereter::IndexConvereter] Out.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CreateIndexConverter] m_isDeviceConfigDirty = 0
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CreateIndexConverter] Calling CheckConnectedDeviceFromLastProfile...
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckConnectedDeviceFromLastProfile] In.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckConnectedDeviceFromLastProfile] Calling GetAllDeviceLastProfile...
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] In.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] Out.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckConnectedDeviceFromLastProfile] Out - 2.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CreateIndexConverter] Out.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetConnectedDeviceCount] _syncDeviceCount(0), _unsyncDeviceCount(2)
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] _syncDeviceCount(0), _unsyncDeviceCount(2), _deviceWithTemperatureCount(0)
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] _s0ModeId(101), m_mode_index(101)
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] Restoring the latest mode values for S0 and Non-S0 respectively if possible ...
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] In.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] sceneId(S0), modeId(101)
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,462 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] modeId(101) for scene S0 saved. - 1
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] Out.
+
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] In.
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] sceneId(Non-S0), modeId(-1)
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] Unable to comply due to the invalid value of the given modeId !!!
+
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SaveModeIdToLastProfileXml] Out.
+
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] Restoring the latest mode values for S0 and Non-S0 respectively if possible - done.
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing DeviceSyncExecuter ...
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing DeviceSyncExecuter ... Done.
+2025-06-16 12:20:25,465 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing GA401EffectExecuter ...
+2025-06-16 12:20:25,466 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing GA401EffectExecuter ... Done.
+2025-06-16 12:20:25,466 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing ThermalEffectExecuter ...
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing ThermalEffectExecuter ... Done.
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing LedMatrixEffectExecuter ...
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing LedMatrixEffectExecuter ... Done.
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing BurnMatrixEffectExecuter ...
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing BurnMatrixEffectExecuter ... Done.
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing SlashLightEffectExecuter ...
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing SlashLightEffectExecuter ... Done.
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing TemporaryEffectExecuter ...
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing TemporaryEffectExecuter ... Done.
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing HueEffectExecuter ...
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] processing HueEffectExecuter ... Done.
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::FindDevices] Out.
+
+2025-06-16 12:20:25,481 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RogAuraDeviceManager] LoadPriorityList...
+2025-06-16 12:20:25,483 aurals_3.07.54_5568_8064 - [AuraSettingStore][LoadPriorityList] In.
+
+2025-06-16 12:20:25,483 aurals_3.07.54_5568_8064 - [AuraSettingStore][LoadPriorityList] Open Priority List fail
+
+2025-06-16 12:20:25,483 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RogAuraDeviceManager] Out
+
+2025-06-16 12:20:25,483 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreAll] In, RequireToken = 1
+2025-06-16 12:20:25,483 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreAll] Check if SmartMode info source from dll...
+2025-06-16 12:20:25,486 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,486 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,486 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,486 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::AuraRequireToken] token = (1)
+2025-06-16 12:20:25,506 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreAll] ExclusiveMode = (1)
+2025-06-16 12:20:25,506 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreAll] Calling GetAllDeviceLastProfile - 1...
+2025-06-16 12:20:25,506 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] In.
+2025-06-16 12:20:25,506 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] Out.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckInGroupDeviceSetLedsConsistency] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckWhetherInGroupDeviceSetIsNull] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] Out.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckWhetherInGroupDeviceSetIsNull] Out - 3.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckInGroupDeviceSetLedsConsistency] Out.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetBiosOnOff_While_Initialize] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] Out.
+
+2025-06-16 12:20:25,507 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetBiosEnabled] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetBiosEnabled] Out.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetBiosOnOff_While_Initialize] BIOS_S0_isEnabled:1 BIOS_NS0_isEnabled:0
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetBiosOnOff_While_Initialize] (if (if else)) m_S0_enabled(1)
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetBiosOnOff_While_Initialize] (final) m_S0_enabled(1)
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreAll] Calling GetAllDeviceLastProfile - 3...
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] Out.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckWhetherInGroupDeviceSetIsNull] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] In.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Opening profile succeeded.
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [AuraSettingStore][AuraSettingStore::LoadLastProfile] Out - 2.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::GetAllDeviceLastProfile] Out.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::CheckWhetherInGroupDeviceSetIsNull] Out - 3.
+
+2025-06-16 12:20:25,509 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreAll] Out - 2.
+
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreSleepState] In.
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::RestoreSleepState] Out.
+
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SetRogAuraDeviceManagerRunningState] In.
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SetRogAuraDeviceManagerRunningState] m_isRunning ==> 1
+
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] In.
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] m_isInitialized ==> 1
+
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [AsRogAuraService][CMyWindow::thread_entry] @@@@@ In thread_entry4 @@@@@
+
+
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [AsRogAuraService][CMyWindow::WindowProc] *** WM_POWERBROADCAST, wParam=0x8013 ***
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [AsRogAuraService][CMyWindow::WindowProc] @@@@@ PBT_POWERSETTINGCHANGE @@@@@
+
+2025-06-16 12:20:25,516 aurals_3.07.54_5568_8064 - [AsRogAuraService][CMyWindow::WindowProc] @@@@@ Modern standby out @@@@@
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::IsRogAuraDeviceManagerInitialized] RogAuraDeviceManager initailized.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] m_isInitialized ==> 0
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceCap] Calling QueryAllDeviceCap...
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceCap] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceCap] availableSyncControllers.size() = 0
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceCap] availableNonSyncControllers.size() = 2
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceCap] Final result of the XML doc =>
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceCap] <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<root>
+    <device key="WallPaper" />
+    <device key="WDL_NB_KB_4ZONE_RGB_LIGHTING" />
+</root>
+
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceCap] Out.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceCap] Got cap profile.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceCap] Out.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8128 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] m_isInitialized ==> 1
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceStatus] In.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [ServiceMediator][CServiceMediator::IsRogAuraDeviceManagerInitialized] Checking RogAuraDeviceManager initailization state...
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [ServiceMediator][CServiceMediator::IsRogAuraDeviceManagerInitialized] RogAuraDeviceManager initailized.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::SetInitailizationState] m_isInitialized ==> 0
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [ServiceMediator][CServiceMediator::get_QueryAllDeviceStatus] Calling QueryAllDeviceStatus...
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::QueryAllDeviceStatus] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::GetProfile] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::ReportStatus_DeviceInSyncGroup_Header_Handle] In.
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::ReportStatus_DeviceInSyncGroup_Header_Handle] m_S0_enabled(1)
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::ReportStatus_DeviceInSyncGroup_Header_Handle] m_mode_index(101)
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::ReportStatus_DeviceInSyncGroup_Header_Handle] Out.
+
+2025-06-16 12:20:25,717 aurals_3.07.54_5568_8084 - [RogAuraDeviceManager][RogAuraDeviceManager::ReportStatus_ReportEffectParams_PostProces

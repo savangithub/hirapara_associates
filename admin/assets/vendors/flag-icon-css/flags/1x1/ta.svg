@@ -1,0 +1,735 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-ta" viewBox="0 0 512 512">
+  <defs id="defs361">
+    <clipPath id="sh-a">
+      <path id="path358" fill-opacity=".7" d="M0 0h512v512H0z"/>
+    </clipPath>
+  </defs>
+  <path id="path363" fill="#006" d="M512 512V0H0v512z" style="stroke-width:.707107"/>
+  <path id="path371" fill="#8fc5ff" stroke="#fff" d="M471.1 219.4c0 57.8-9.2 120.2-84.4 150-74.8-29.8-84-92.2-84.4-150z" style="stroke-width:3.54661"/>
+  <path id="path373" fill="#366cc9" stroke="#000" d="M386.7 369a121.6 121.7 0 0 0 66.7-56.7h-7.1c-2.1-.3-72-7-80.5-10.6-7-2.5-34.8 2.5-47.5 7a120.6 120.6 0 0 0 68.4 60.4z" style="stroke-width:3.54661"/>
+  <path id="path375" fill="#5d3100" stroke="#000" stroke-width=".4" d="M334.2 333.6h4.3c1 0 1 0 1.4-1 .4-1.1 1.4-.8 2.1-.4.7.3 2.2 0 2.9-.7.7-.7.7-.7 1.4 0s1 .3 1.8 0c.3 0 1.7-.7 2-1.8.4-1 1.5-1.4 1.9-.7.3.7 1 .7 1.7.7.8 0 .8.4.8 1.4 0 .7 0 1 1.7-.3 1.4 1.4 1.8.7 1.8-.7 0-1.5 0-7.1-.7-7.5-.7-.3-1-2.8-1.4-4.6 0-3.5 0-3.5-3.6-5.3 0-1-.7-1.4-3.5-1.4.3-.4 0-1.5-.7-1.8-.7-.4-.7-.7 0-2.1.7 0 2 0 2.4-1.1.8-.7 2.9-.7 4.3 0s2.8.7 5.3 0l4.3-2.1c1.8-1 2.1-1.4 2.1-2.9 0-3.5-1-7-1.8-8.8-1-1.8-1-3.6-2.4-6.8-1.5-2.8-1.5-3.5-2.9-5.3-.7-.7-1-1-1-2.1a5.3 5.3 0 0 0-1.8-3.6c-2.9-2.4-3.6-10.6-5-16.6-.7-3.6 0-11.7-1.4-13.2-2.5-1.7-3.6-1.4-5.3-2-1.4-1.9-1.8-5-3.2-8.2-1.8.3-2.9 2-4 2.8-1 .7-1.3.7-1.3 2.5 0 1.4-1.1 3.5-2.5 6.4-1.4 2.8-4.6 1.7-7.1 5.6-5-6-5-7.8-5.3-9.5 0-1.8-1.1-2.2-4-4.7v-5.3c-2.4-1.7-3.8-1.4-4.9 0-1 1-1.8 2.9-3.5 3.6-.8 1.4-3.6 4.2-5.7 8.1 2.1 32 9.2 63.9 30.8 89.4z"/>
+  <path id="path377" fill="#ff0" stroke="#fff" d="M471.1 219.4c0-22-1-43.3-.7-61.7a225.6 225.6 0 0 0-83.7-15.3c-18.8 0-55.7 2.9-83.7 15.3.7 18.4-.7 39.7-.7 61.7z" style="stroke-width:3.54661"/>
+  <path id="path379" fill="#cf6200" d="M307 244.5c.9 1.5 2.6 4 2.7 5.4.8-1.3 1.2-2 1.3-2.7.2-.8 1.2-2.5.8-3.3-.5-.9-.6-1.6.4-1 1 .7.8 1.8.6 3.4-.6 4.5-2.5 5.5-2.8 8.6 2.7 6.3.7 8.6 3.6 14.9.5.3 1.7-.2 2.1 0 1.6-1.2 2.7-.8 5-.4 2.1.5 3.3 2 3.3 3.5 0 1.4 0 1.7.5 2.5.5 1 1.5 2.2 1.2 3-.2 1 .2 1.5.5 2s-.1 1.4-.4 2.1c-.3.8-.2 1.5 1 3 1 1.3 3.6 7 3.6 10.5 0 3.3.2 5 1.6 5.6 1.4.7 1.9 1.2 1.6 2.7a84 84 0 0 0 .9 10.3c.2 1.2.6 1 1.1 1.6.6.6 1 1.4 2.8 1.4 2 0 3.6-.3 4.9 0 1.6 2.2 2.6 5.3 3 7.3.3 2 .3 4.6 1 4.6.6 0 1.3 0 1-2.3-.2-2.4-.3-2.8-1.1-4-.9-1.2-1.3-1.8-.9-2.5.5-.7.6-2 .4-2.9-.2-.9-.4-2.3 1.1-.5l2.6 3c.5.7.6 1.8.5 3-.1 1 .1 1.5.7 1 .7-.6 1.5.4 1.1 1.6-.3 1.2 0 2 1.2 2.3 1.2.3 1.6.6 1.8 1.4.2.8 1.3 1.2 1.3-.4 0-1.7-.7-5.2-1.1-6.3-.5-1.1-.9-3.5-1-5 0-1.3-.3-1.6-1-2-.6-.2-1.2-.6-1.3-1.4 0-.7-.7-.7-1-.7-.4 0-.8-.4-1-.8-.2-.5-.5-.5-1-.6-.4 0-1.2.2-1.4-.5-.2-.7-.6-1.8-1-2.4-.4-.7-.9-.8-1-3 0-2 0-2.2-.7-3a23 23 0 0 1-2.2-3.5c-.4-.7-1-1.6-1 .1 0 1.7 0 2.7 1.2 3.3 1.1.7 1.4.7.9 1.6-.5.9 0 1.6.2 2.2.2.7.6 1.3 0 2-.6.6-1.1.4-1-.6a5.7 5.7 0 0 0-.7-3c-.5-.9-.9-1.5-1.4-1-.6.5-1 0-.7-.4.4-.3.3-.7 0-1-.3-.1-.3-.5.2-1 .5-.6.4-.9.1-2.2-.3-1.2-2.3-7.7-3.2-9.2-1-1.5-.8-2.6.3-1 1.2 1.4 2.3 2.6 2.3 3.9.2 1.2.5 2 .7 2.4.3.5.8.2.9-.7.1-1 1-.7-.4-2.7-1.2-1.9-3.6-5.1-4.5-11-1-5.8-1.3-9.6-2.3-11.1-.9-1.6-1.2-2-1.3-3.5 0-1.5 0-3-.7-4s-1-1.3-1.1.4a21 21 0 0 0 .5 6c.5.6.3 2.2.1 3.2-.1.9-1.5 1.8 1.5 3.7 1.2.7 1 1.7.8 2.3-.1.7-.3.6-1-.4-.6-1-1.3-1.8-2-2.4-.6-.6-.6-1-.6-2.2.1-1.2.4-2.2 0-2.7-.3-.4-.5 0-.7.7-.2.7-.3 2.7-.7 3.2-.4.5-.6.3-.9-1-.3-1.2.1-3 .7-5.1.7-2.2 1.1-4.3.6-7.1-.6-2.8-.3-3.6-2.5-6-2.1-2.2-4.4-4.4-5.5-7.3-1-2.9-1.2-5.3-2.3-6.6a15.1 15.1 0 0 0-3.7-3.4V234c0-1-.5-1.6-1.6-1.4-1.2.2-2 1.1-2.7 2.6-.7 1.3-1.3.7-2.3 3-1.1 2.4-2.5 3.6-2.5 6.2z" style="stroke-width:.71738"/>
+  <path id="path381" fill="#cf6200" d="M313.7 271.6c.7.5 1.4.7 2.5.2 1-.5 2.4-2.2 4-.6a10 10 0 0 1 2.2 6.2c0 2 0 5.8 2.3 7.9 2.3 2.1 3.6 4.3 3.6 7.1.1 2.8 1.1 7 1.5 8.2.2 1 .8 2.3 1.5 3 .8.8 1.3 3 1.5 5 0 2.4-.3 4 0 5s0 2-.9 1.4c-.8-.5-1-.7-1.4-1.7-.4-1-1.1-.7-.6.7.5 1.5 1.8 2.6 3 2.6s1.6.2 2.3 1c.7.7.9 1.1 2.2 1.1 1.3 0 1.4 0 2.6.4 1.2.3 1.2.1 1.9 0 .6-.2 1.3.3 1.7 1.5.4 1.3 1.6 4.6 1.6 5.4 0 .9 0 1.9.6 2.8.7 1 .5 1.9-.3 1.3-.7-.6-.7-.3-1.2-.3-.6.1-1-.1-1.7-.6s-.3-.4-1-1.5c-.7-1-1.2-1.5-1.2-.7s0 1.9-.7 1.5c-.5-.5-.8-.5-1.3 0s-.6.8-1.2-.1c-.5-.9-1.1-1-1.7-1.2-.6-.2-.6-.1-.8-1-.3-.8-1.1-1-1.9-1-.7 0-1.1-.3-1.2-.9 0-.6-.5-1-.9-1.2-.4-.3-.1-1-.3-1.6-.1-.6-.6-.4-1-.5-.4-.1-.6 0-.6-1s-.4-1.2-.7-1.9c-.2-.7 0-1.3.2-2a2 2 0 0 0-.4-1.8c-.6-.7-.1-1.3-1.6-2.6-1.4-1.3-2.2-.2-2.7-3.3a48 48 0 0 0-2.2-10.3c-.7-1-1.4-1.7-2.2-2-.8-.3-1.4 0-1.4-1.9-.2-1.7-.7-3.9-1.8-5l-2.2-2c-.5-.3-.7-1.2 0-2.8.8-1.6.5-3.7.4-4.7 0-1-.4-2.3-.1-3.4.2-1 0-2.5-.3-3.2-.2-.7-.6-1-.1-1.5zm22.2-26.2a20 20 0 0 1-4.3 4.2c-1.8 1.2-4 2.1-2.8 4.3 1.3 2 2.3 2.3 2.5 3.9.3 1.6.6 2.9 1.8 3.3 1.3.4 1.8.1 1.8 2.7s0 3.6 1.1 4.5c1.2 1 1 2 1.4 4.4.5 2.3.5 7.3 2 10.7 1.6 3.4 4.9 10 4.5 11.3-.4 1.3-.9 2.4.6 4a11 11 0 0 1 2.6 5.3c.1 1.4.3 1.9 1.8 1.4s2.2-1 2.7-1.7c.5-.6 1.4-.4 2.8.3s3.5 1.4 4.7.7c1.2-.7 1.9-1.8 3-1.8 1.7-1.3 2.3-3.9 2.7-4.6.3-.7 0-.7-.7-1.4s-.3-2-.5-3.2a14 14 0 0 0-2-5.8c-1.5-2.7-2.4-6-3.4-7-1-.8-1.4-2.8-1.5-3.8-.2-1-1.3-1.9-2-2.6-.8-.7-1.5-1.8-2.3-6.2-.9-4.3-1.5-7.3-1.5-8 0-.8-.2-1-1-1.1-.6-.3-1-1.5-.8-2.2.2-.6-.2-1.2-.5-2-.3-.6 0-2 .5-2.8.5-.7.4-2.8-.1-4.5-.5-1.7-1-3.2-2.9-3.5-2-.2-2.3-.7-3.1-2.3-.8-1.6-1.5-4.4-1.8-5-.2-.7-.5-.7-2 .5s-2 1.6-2 3.9c0 1.4.2 2 .7 2.9.5.8.7 1 1 3.4.4 2.4 2.5 6-.2 8.1-2.8 2.2-2.3 2.6-2.2 4 0 1.5-.7 2.5-1.2.4-.5-2 0-3.3 1.4-4.3 1.5-1 2.9-2.2 1.9-3.6-1-1.3-1.4-4.5-1.4-6-.1-1.4-.5-2-1.3-.8z" style="stroke-width:.71738"/>
+  <path id="path383" fill="#00b800" d="m314 276.7.2 3c0 1 .4 3.1-.4 4.6-.7 1.6-.5 2.5 0 3a2.2 2.2 0 0 0 1.4-3 3 3 0 0 1 .2-2.8c.4-.8.4-1.3 0-1.9-.4-.6-.4-.6 0-2.4.5-1.5-.6-1.5-1.4-.5zm15.8 23.9c-.4-1.2-1.4-5.4-1.5-8.2a10 10 0 0 0-3.6-7.1c-1.8-1.6-2.1-4.3-2.3-6.3-1.3-.9-1.9-.5-1.7 1 0 1.7 1.7 2.5 1.5 4.8-.3 2.5-.3 1.8.9 3 1.1 1.3 1.6 2.3 1 2.8-.6.5-.7 1.3.1 1.6.9.4 1 1.3.8 2.2 0 .8.7 1 1.2 1.6a3 3 0 0 1 0 3c-.4.8-.5 2.1.4 1.4.9-.7 1.2 0 1.9 1.2.5 1 1 .7 1.7.3a7.7 7.7 0 0 1-.5-1.4zm11.9 21.4c-.6 1-1.2.7-1.7.1-.6-.5-1.3-.5-1-1.5.3-1 .2-1.2-.6-1.8a5.5 5.5 0 0 0-.2 0h-.8c-1.3 0-1.5-.5-2.2-1.2a6.2 6.2 0 0 0-.4-.5v.7c0 1 0 .8-1 1.1-1 .3-.9-1-1.1-1.8a3 3 0 0 0-.1-.5c-1.1-.2-2.3-1.4-2.7-2.6-.5-1.5 0-1.6.5-.7.4.8.7 1.2 1.5 1.7s1-.3.8-1.4a4.7 4.7 0 0 1 0-1.2c-.3-.4-.5-.7-.9-.9-1.4-.6-1-.8-.9-2 0-1.1-.2-1.1-1.1-.6-1 .8-1 0-1-1.9 0-1.8-1.3-1.8-1.5-.5-.3 1.3-.7.4-1.3-1.4-.5-1.9-1.3-2.3-1.4-.5 0 1.4-.4 1.8-1.4 1l.4 2.8c.5 3 1.2 2 2.7 3.3 1.5 1.3 1 2 1.5 2.6.6.6.7 1 .5 1.8-.2.7-.5 1.4-.2 2 .3.7.7 1 .7 1.8 0 .9.2.9.6 1.1l.7.1.7-1c1.2-1 3 .1 3.4 1.5.5 1.3 1.2 1.8 2 .7.8-1 .6-1 1.5 0 .8 1 1.3.9 1.3.9s1-.4 1.6.2c.6.5 1 .4 2.1-1.3 1.3-1.7-.5-1.2-1 0zm3.3-50.6c.3-2.7 0-5.4 1.2-6.4 1-1 2.4-2.9 2.3 1.3 0 4.1-.2 4-1 4.8-1 1-1.7 1.3-.8 3 .9 1.5 1 1.6.9 4-.2 2.5-.2 3.5.8 4.7 1 1.3 1.2 1.4 1.4 2.8a9 9 0 0 0 2.2 4.1c1 1 2.4 3.8 2.5 5.8.2 2 1.9 2.5 3.5 3.8 1.5 1.4-.4 2.3-1.6 1.8-1.2-.8-.7 0-1.5.7-.7 1-1 1-1.6-.4-.7-1.4-2.7-2.5-3.7-2.9-.9-.3-1.8-1.9-2.7-3.5a4.5 4.5 0 0 0-3.6-2.5c.5 1 .7 1.9.5 2.2-.3 1.4-.8 2.4.7 4a11 11 0 0 1 2.6 5.3c0 1.3.3 1.8 1.7 1.3 1.6-.5 2.3-1 2.8-1.6.5-.6 1.4-.5 2.8.3 1.3.7 3.4 1.4 4.6.7 1.3-.7 1.9-1.8 3-1.8 1.8-1.3 2.3-3.9 2.7-4.6.4-.7.1-.7-.6-1.4s-.3-2-.5-3.2c-.1-1.3-.6-3.1-2.1-5.8-1.5-2.8-2.3-6-3.3-7-1-.8-1.4-2.8-1.6-3.9 0-1-1.2-1.8-2-2.6-.7-.7-1.4-1.7-2.3-6l-1.4-7.4c-.8 1.5-1.4 1.8-1.8.8-.3-1-.8-1.7-1.3-1s-.7-.6-.7-1.2 0-.7-.7-.7c-.6 0-.1-1-.4-2.9-.2-1.8-.6-2-.8.2-.2 2.2-1.4 3.5-1 4 .5.5.3 1.5-.2 3-.5 1.4-.3 2.3.1 3.3s-.3 2.9-.5 4.4c-.3 1.6 1 3.2 1.4.5zm-22.5-22c-1 0-1.6.8-1 3.6.3 1.7-1 1.4-1.4.5-.6-.9-1-2.7-2-4.3-.9-1.6-.5 1-.5 2.6-.2 1.4.8 1.4 1.7 2.7.9 1.3 0 1.7-.9 1.7s-.5 2-.3 3.3c.3 1.4-.2 1.6-.9.5s-.3-2.8-.1-5c.1-2 .2-1.5-1.2-2-1.3-.5-1-.7-.6-2 .5-1.2 1-1.8.4-2.5-.6-.5-.5-.9.5-1 1-.2.6-.9 1.4-1.2.9-.2 1.3.2 1.5-1.4 0-1.4.5-2.2 1.4-1.7.7 2 1.4 5.2 2 6.1zm12.3 14.4c0 2.6 0 3.6 1.1 4.5 1.2 1 1 2 1.5 4.4.5 2.3.5 7.3 2 10.7l1.6 3.7a6.9 6.9 0 0 0 1.8-2.3c.4-.8-.7-2.5-1.6-4-.9-1.5.1-2 1-3.8.8-2-.2-2-1.5-2.5-1.4-.5-1.4-1.7-2.1-3.7-.7-2-.6-2.8 0-3.9.3-1.1 0-2-1-2.2-1-.3-.7-1-.4-2.2.5-1.3.7-1.5-.8-1.2-1.1.3-1.4.5-1.8 1 .2.3.2.8.2 1.5z" style="stroke-width:.71738"/>
+  <path id="path385" fill="#5d3100" d="M349 269c0 1.4 0 2.1-.4 2.6s-.2 1.3.2 2c.3.8.6 1.8.3 3-.4 1.4.2 2.6.9 3 .7.3 1.1 0 .9 1.7a5.3 5.3 0 0 0 1.5 4.3c.9.7 1.5 1.9 1.5 2.6-.2.7.5 1.5 1.4 1.9.9.3.7.5.7 1s.4.5 1.4.7c1 .2 1.7.9 2.9 2.2 1.1 1.4 2.6package Archive::Zip::ZipFileMember;
+
+use strict;
+use vars qw( $VERSION @ISA );
+
+BEGIN {
+    $VERSION = '1.68';
+    @ISA     = qw ( Archive::Zip::FileMember );
+}
+
+use Archive::Zip qw(
+  :CONSTANTS
+  :ERROR_CODES
+  :PKZIP_CONSTANTS
+  :UTILITY_METHODS
+);
+
+# Create a new Archive::Zip::ZipFileMember
+# given a filename and optional open file handle
+#
+sub _newFromZipFile {
+    my $class              = shift;
+    my $fh                 = shift;
+    my $externalFileName   = shift;
+    my $archiveZip64       = @_ ? shift : 0;
+    my $possibleEocdOffset = @_ ? shift : 0;     # normally 0
+
+    my $self = $class->new(
+        'eocdCrc32'                 => 0,
+        'diskNumberStart'           => 0,
+        'localHeaderRelativeOffset' => 0,
+        'dataOffset'                => 0,    # localHeaderRelativeOffset + header length
+        @_
+    );
+    $self->{'externalFileName'}   = $externalFileName;
+    $self->{'fh'}                 = $fh;
+    $self->{'archiveZip64'}       = $archiveZip64;
+    $self->{'possibleEocdOffset'} = $possibleEocdOffset;
+    return $self;
+}
+
+sub isDirectory {
+    my $self = shift;
+    return (substr($self->fileName, -1, 1) eq '/'
+          and $self->uncompressedSize == 0);
+}
+
+# Seek to the beginning of the local header, just past the signature.
+# Verify that the local header signature is in fact correct.
+# Update the localHeaderRelativeOffset if necessary by adding the possibleEocdOffset.
+# Returns status.
+
+sub _seekToLocalHeader {
+    my $self          = shift;
+    my $where         = shift;    # optional
+    my $previousWhere = shift;    # optional
+
+    $where = $self->localHeaderRelativeOffset() unless defined($where);
+
+    # avoid loop on certain corrupt files (from Julian Field)
+    return _formatError("corrupt zip file")
+      if defined($previousWhere) && $where == $previousWhere;
+
+    my $status;
+    my $signature;
+
+    $status = $self->fh()->seek($where, IO::Seekable::SEEK_SET);
+    return _ioError("seeking to local header") unless $status;
+
+    ($status, $signature) =
+      _readSignature($self->fh(), $self->externalFileName(),
+                     LOCAL_FILE_HEADER_SIGNATURE, 1);
+    return $status if $status == AZ_IO_ERROR;
+
+    # retry with EOCD offset if any was given.
+    if ($status == AZ_FORMAT_ERROR && $self->{'possibleEocdOffset'}) {
+        $status = $self->_seekToLocalHeader(
+            $self->localHeaderRelativeOffset() + $self->{'possibleEocdOffset'},
+            $where
+        );
+        if ($status == AZ_OK) {
+            $self->{'localHeaderRelativeOffset'} +=
+              $self->{'possibleEocdOffset'};
+            $self->{'possibleEocdOffset'} = 0;
+        }
+    }
+
+    return $status;
+}
+
+# Because I'm going to delete the file handle, read the local file
+# header if the file handle is seekable. If it is not, I assume that
+# I've already read the local header.
+# Return ( $status, $self )
+
+sub _become {
+    my $self     = shift;
+    my $newClass = shift;
+    return $self if ref($self) eq $newClass;
+
+    my $status = AZ_OK;
+
+    if (_isSeekable($self->fh())) {
+        my $here = $self->fh()->tell();
+        $status = $self->_seekToLocalHeader();
+        $status = $self->_readLocalFileHeader() if $status == AZ_OK;
+        $self->fh()->seek($here, IO::Seekable::SEEK_SET);
+        return $status unless $status == AZ_OK;
+    }
+
+    delete($self->{'eocdCrc32'});
+    delete($self->{'diskNumberStart'});
+    delete($self->{'localHeaderRelativeOffset'});
+    delete($self->{'dataOffset'});
+    delete($self->{'archiveZip64'});
+    delete($self->{'possibleEocdOffset'});
+
+    return $self->SUPER::_become($newClass);
+}
+
+sub diskNumberStart {
+    shift->{'diskNumberStart'};
+}
+
+sub localHeaderRelativeOffset {
+    shift->{'localHeaderRelativeOffset'};
+}
+
+sub dataOffset {
+    shift->{'dataOffset'};
+}
+
+# Skip local file header, updating only extra field stuff.
+# Assumes that fh is positioned before signature.
+sub _skipLocalFileHeader {
+    my $self = shift;
+    my $header;
+    my $bytesRead = $self->fh()->read($header, LOCAL_FILE_HEADER_LENGTH);
+    if ($bytesRead != LOCAL_FILE_HEADER_LENGTH) {
+        return _ioError("reading local file header");
+    }
+    my $fileNameLength;
+    my $extraFieldLength;
+    my $bitFlag;
+    (
+        undef,    # $self->{'versionNeededToExtract'},
+        $bitFlag,
+        undef,    # $self->{'compressionMethod'},
+        undef,    # $self->{'lastModFileDateTime'},
+        undef,    # $crc32,
+        undef,    # $compressedSize,
+        undef,    # $uncompressedSize,
+        $fileNameLength,
+        $extraFieldLength
+    ) = unpack(LOCAL_FILE_HEADER_FORMAT, $header);
+
+    if ($fileNameLength) {
+        $self->fh()->seek($fileNameLength, IO::Seekable::SEEK_CUR)
+          or return _ioError("skipping local file name");
+    }
+
+    my $zip64 = 0;
+    if ($extraFieldLength) {
+        $bytesRead =
+          $self->fh()->read($self->{'localExtraField'}, $extraFieldLength);
+        if ($bytesRead != $extraFieldLength) {
+            return _ioError("reading local extra field");
+        }
+        if ($self->{'archiveZip64'}) {
+            my $status;
+            ($status, $zip64) =
+              $self->_extractZip64ExtraField($self->{'localExtraField'}, undef, undef);
+            return $status if $status != AZ_OK;
+            $self->{'zip64'} ||= $zip64;
+        }
+    }
+
+    $self->{'dataOffset'} = $self->fh()->tell();
+
+    if ($bitFlag & GPBF_HAS_DATA_DESCRIPTOR_MASK) {
+
+        # Read the crc32, compressedSize, and uncompressedSize from the
+        # extended data descriptor, which directly follows the compressed data.
+        #
+        # Skip over the compressed file data (assumes that EOCD compressedSize
+        # was correct)
+        $self->fh()->seek($self->{'compressedSize'}, IO::Seekable::SEEK_CUR)
+          or return _ioError("seeking to extended local header");
+
+        # these values should be set correctly from before.
+        my $oldCrc32            = $self->{'eocdCrc32'};
+        my $oldCompressedSize   = $self->{'compressedSize'};
+        my $oldUncompressedSize = $self->{'uncompressedSize'};
+
+        my $status = $self->_readDataDescriptor($zip64);
+        return $status unless $status == AZ_OK;
+
+        # The buffer with encrypted data is prefixed with a new
+        # encrypted 12 byte header. The size only changes when
+        # the buffer is also compressed
+        $self->isEncrypted && $oldUncompressedSize > $self->{'uncompressedSize'}
+          and $oldUncompressedSize -= DATA_DESCRIPTOR_LENGTH;
+
+        return _formatError(
+            "CRC or size mismatch while skipping data descriptor")
+          if ( $oldCrc32 != $self->{'crc32'}
+            || $oldUncompressedSize != $self->{'uncompressedSize'});
+
+        $self->{'crc32'} = 0
+            if $self->compressionMethod() == COMPRESSION_STORED ;
+    }
+
+    return AZ_OK;
+}
+
+# Read from a local file header into myself.  Returns AZ_OK (in
+# scalar context) or a pair (AZ_OK, $headerSize) (in list
+# context) if successful.
+# Assumes that fh is positioned after signature.
+# Note that crc32, compressedSize, and uncompressedSize will be 0 if
+# GPBF_HAS_DATA_DESCRIPTOR_MASK is set in the bitFlag.
+
+sub _readLocalFileHeader {
+    my $self = shift;
+    my $header;
+    my $bytesRead = $self->fh()->read($header, LOCAL_FILE_HEADER_LENGTH);
+    if ($bytesRead != LOCAL_FILE_HEADER_LENGTH) {
+        return _ioError("reading local file header");
+    }
+    my $fileNameLength;
+    my $crc32;
+    my $compressedSize;
+    my $uncompressedSize;
+    my $extraFieldLength;
+    (
+        $self->{'versionNeededToExtract'}, $self->{'bitFlag'},
+        $self->{'compressionMethod'},      $self->{'lastModFileDateTime'},
+        $crc32,                            $compressedSize,
+        $uncompressedSize,                 $fileNameLength,
+        $extraFieldLength
+    ) = unpack(LOCAL_FILE_HEADER_FORMAT, $header);
+
+    if ($fileNameLength) {
+        my $fileName;
+        $bytesRead = $self->fh()->read($fileName, $fileNameLength);
+        if ($bytesRead != $fileNameLength) {
+            return _ioError("reading local file name");
+        }
+        $self->fileName($fileName);
+    }
+
+    my $zip64 = 0;
+    if ($extraFieldLength) {
+        $bytesRead =
+          $self->fh()->read($self->{'localExtraField'}, $extraFieldLength);
+        if ($bytesRead != $extraFieldLength) {
+            return _ioError("reading local extra field");
+        }
+        if ($self->{'archiveZip64'}) {
+            my $status;
+            ($status, $zip64) =
+              $self->_extractZip64ExtraField($self->{'localExtraField'},
+                                             $uncompressedSize,
+                                             $compressedSize);
+            return $status if $status != AZ_OK;
+            $self->{'zip64'} ||= $zip64;
+        }
+    }
+
+    $self->{'dataOffset'} = $self->fh()->tell();
+
+    if ($self->hasDataDescriptor()) {
+
+        # Read the crc32, compressedSize, and uncompressedSize from the
+        # extended data descriptor.
+        # Skip over the compressed file data (assumes that EOCD compressedSize
+        # was correct)
+        $self->fh()->seek($self->{'compressedSize'}, IO::Seekable::SEEK_CUR)
+          or return _ioError("seeking to extended local header");
+
+        my $status = $self->_readDataDescriptor($zip64);
+        return $status unless $status == AZ_OK;
+    } else {
+        return _formatError(
+            "CRC or size mismatch after reading data descriptor")
+          if ( $self->{'crc32'} != $crc32
+            || $self->{'uncompressedSize'} != $uncompressedSize);
+    }
+
+    return
+      wantarray
+      ? (AZ_OK,
+         SIGNATURE_LENGTH,
+         LOCAL_FILE_HEADER_LENGTH +
+         $fileNameLength +
+         $extraFieldLength)
+      : AZ_OK;
+}
+
+# This will read the data descriptor, which is after the end of compressed file
+# data in members that have GPBF_HAS_DATA_DESCRIPTOR_MASK set in their bitFlag.
+# The only reliable way to find these is to rely on the EOCD compressedSize.
+# Assumes that file is positioned immediately after the compressed data.
+# Returns status; sets crc32, compressedSize, and uncompressedSize.
+sub _readDataDescriptor {
+    my $self  = shift;
+    my $zip64 = shift;
+    my $signatureData;
+    my $header;
+    my $crc32;
+    my $compressedSize;
+    my $uncompressedSize;
+
+    my $bytesRead = $self->fh()->read($signatureData, SIGNATURE_LENGTH);
+    return _ioError("reading header signature")
+      if $bytesRead != SIGNATURE_LENGTH;
+    my $signature = unpack(SIGNATURE_FORMAT, $signatureData);
+
+    my $dataDescriptorLength;
+    my $dataDescriptorFormat;
+    my $dataDescriptorLengthNoSig;
+    my $dataDescriptorFormatNoSig;
+    if (! $zip64) {
+        $dataDescriptorLength      = DATA_DESCRIPTOR_LENGTH;
+        $dataDescriptorFormat      = DATA_DESCRIPTOR_FORMAT;
+        $dataDescriptorLengthNoSig = DATA_DESCRIPTOR_LENGTH_NO_SIG;
+        $dataDescriptorFormatNoSig = DATA_DESCRIPTOR_FORMAT_NO_SIG
+    }
+    else {
+        $dataDescriptorLength      = DATA_DESCRIPTOR_ZIP64_LENGTH;
+        $dataDescriptorFormat      = DATA_DESCRIPTOR_ZIP64_FORMAT;
+        $dataDescriptorLengthNoSig = DATA_DESCRIPTOR_ZIP64_LENGTH_NO_SIG;
+        $dataDescriptorFormatNoSig = DATA_DESCRIPTOR_ZIP64_FORMAT_NO_SIG
+    }
+
+    # unfortunately, the signature appears to be optional.
+    if ($signature == DATA_DESCRIPTOR_SIGNATURE
+        && ($signature != $self->{'crc32'})) {
+        $bytesRead = $self->fh()->read($header, $dataDescriptorLength);
+        return _ioError("reading data descriptor")
+          if $bytesRead != $dataDescriptorLength;
+
+        ($crc32, $compressedSize, $uncompressedSize) =
+          unpack($dataDescriptorFormat, $header);
+    } else {
+        $bytesRead = $self->fh()->read($header, $dataDescriptorLengthNoSig);
+        return _ioError("reading data descriptor")
+          if $bytesRead != $dataDescriptorLengthNoSig;
+
+        $crc32 = $signature;
+        ($compressedSize, $uncompressedSize) =
+          unpack($dataDescriptorFormatNoSig, $header);
+    }
+
+    $self->{'eocdCrc32'} = $self->{'crc32'}
+      unless defined($self->{'eocdCrc32'});
+    $self->{'crc32'}            = $crc32;
+    $self->{'compressedSize'}   = $compressedSize;
+    $self->{'uncompressedSize'} = $uncompressedSize;
+
+    return AZ_OK;
+}
+
+# Read a Central Directory header. Return AZ_OK on success.
+# Assumes that fh is positioned right after the signature.
+
+sub _readCentralDirectoryFileHeader {
+    my $self      = shift;
+    my $fh        = $self->fh();
+    my $header    = '';
+    my $bytesRead = $fh->read($header, CENTRAL_DIRECTORY_FILE_HEADER_LENGTH);
+    if ($bytesRead != CENTRAL_DIRECTORY_FILE_HEADER_LENGTH) {
+        return _ioError("reading central dir header");
+    }
+    my ($fileNameLength, $extraFieldLength, $fileCommentLength);
+    (
+        $self->{'versionMadeBy'},
+        $self->{'fileAttributeFormat'},
+        $self->{'versionNeededToExtract'},
+        $self->{'bitFlag'},
+        $self->{'compressionMethod'},
+        $self->{'lastModFileDateTime'},
+        $self->{'crc32'},
+        $self->{'compressedSize'},
+        $self->{'uncompressedSize'},
+        $fileNameLength,
+        $extraFieldLength,
+        $fileCommentLength,
+        $self->{'diskNumberStart'},
+        $self->{'internalFileAttributes'},
+        $self->{'externalFileAttributes'},
+        $self->{'localHeaderRelativeOffset'}
+    ) = unpack(CENTRAL_DIRECTORY_FILE_HEADER_FORMAT, $header);
+
+    $self->{'eocdCrc32'} = $self->{'crc32'};
+
+    if ($fileNameLength) {
+        $bytesRead = $fh->read($self->{'fileName'}, $fileNameLength);
+        if ($bytesRead != $fileNameLength) {
+            _ioError("reading central dir filename");
+        }
+    }
+    if ($extraFieldLength) {
+        $bytesRead = $fh->read($self->{'cdExtraField'}, $extraFieldLength);
+        if ($bytesRead != $extraFieldLength) {
+            return _ioError("reading central dir extra field");
+        }
+        if ($self->{'archiveZip64'}) {
+            my ($status, $zip64) =
+              $self->_extractZip64ExtraField($self->{'cdExtraField'},
+                                             $self->{'uncompressedSize'},
+                                             $self->{'compressedSize'},
+                                             $self->{'localHeaderRelativeOffset'},
+                                             $self->{'diskNumberStart'});
+            return $status if $status != AZ_OK;
+            $self->{'zip64'} ||= $zip64;
+        }
+    }
+    if ($fileCommentLength) {
+        $bytesRead = $fh->read($self->{'fileComment'}, $fileCommentLength);
+        if ($bytesRead != $fileCommentLength) {
+            return _ioError("reading central dir file comment");
+        }
+    }
+
+    # NK 10/21/04: added to avoid problems with manipulated headers
+    if (    $self->{'uncompressedSize'} != $self->{'compressedSize'}
+        and $self->{'compressionMethod'} == COMPRESSION_STORED) {
+        $self->{'uncompressedSize'} = $self->{'compressedSize'};
+    }
+
+    $self->desiredCompressionMethod($self->compressionMethod());
+
+    return AZ_OK;
+}
+
+sub rewindData {
+    my $self = shift;
+
+    my $status = $self->SUPER::rewindData(@_);
+    return $status unless $status == AZ_OK;
+
+    return AZ_IO_ERROR unless $self->fh();
+
+    $self->fh()->clearerr();
+
+    # Seek to local file header.
+    # The only reason that I'm doing this this way is that the extraField
+    # length seems to be different between the CD header and the LF header.
+    $status = $self->_seekToLocalHeader();
+    return $status unless $status == AZ_OK;
+
+    # skip local file header
+    $status = $self->_skipLocalFileHeader();
+    return $status unless $status == AZ_OK;
+
+    # Seek to beginning of file data
+    $self->fh()->seek($self->dataOffset(), IO::Seekable::SEEK_SET)
+      or return _ioError("seeking to beginning of file data");
+
+    return AZ_OK;
+}
+
+# Return bytes read. Note that first parameter is a ref to a buffer.
+# my $data;
+# my ( $bytesRead, $status) = $self->readRawChunk( \$data, $chunkSize );
+sub _readRawChunk {
+    my ($self, $dataRef, $chunkSize) = @_;
+    return (0, AZ_OK) unless $chunkSize;
+    my $bytesRead = $self->fh()->read($$dataRef, $chunkSize)
+      or return (0, _ioError("reading data"));
+    return ($bytesRead, AZ_OK);
+}
+
+1;
+                                                                                                                                                                            =head1 NAME
+
+Archive::Zip::FAQ - Answers to a few frequently asked questions about Archive::Zip
+
+=head1 DESCRIPTION
+
+It seems that I keep answering the same questions over and over again. I
+assume that this is because my documentation is deficient, rather than that
+people don't read the documentation.
+
+So this FAQ is an attempt to cut down on the number of personal answers I have
+to give. At least I can now say "You I<did> read the FAQ, right?".
+
+The questions are not in any particular order. The answers assume the current
+version of Archive::Zip; some of the answers depend on newly added/fixed
+functionality.
+
+=head1 Install problems on RedHat 8 or 9 with Perl 5.8.0
+
+B<Q:> Archive::Zip won't install on my RedHat 9 system! It's broke!
+
+B<A:> This has become something of a FAQ.
+Basically, RedHat broke some versions of Perl by setting LANG to UTF8.
+They apparently have a fixed version out as an update.
+
+You might try running CPAN or creating your Makefile after exporting the LANG
+environment variable as
+
+C<LANG=C>
+
+L<https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=87682>
+
+=head1 Why is my zip file so big?
+
+B<Q:> My zip file is actually bigger than what I stored in it! Why?
+
+B<A:> Some things to make sure of:
+
+=over 4
+
+=item Make sure that you are requesting COMPRESSION_DEFLATED if you are storing strings.
+
+$member->desiredCompressionMethod( COMPRESSION_DEFLATED );
+
+=item Don't make lots of little files if you can help it.
+
+Since zip computes the compression tables for each member, small
+members without much entropy won't compress well.  Instead, if you've
+got lots of repeated strings in your data, try to combine them into
+one big member.
+
+=item Make sure that you are requesting COMPRESSION_STORED if you are storing things that are already compressed.
+
+If you're storing a .zip, .jpg, .mp3, or other compressed file in a zip,
+then don't compress them again. They'll get bigger.
+
+=back
+
+=head1 Sample code?
+
+B<Q:> Can you send me code to do (whatever)?
+
+B<A:> Have you looked in the C<examples/> directory yet? It contains:
+
+=over 4
+
+=item examples/calcSizes.pl    -- How to find out how big a Zip file will be before writing it
+
+=item examples/copy.pl         -- Copies one Zip file to another
+
+=item examples/extract.pl      -- extract file(s) from a Zip
+
+=item examples/mailZip.pl      -- make and mail a zip file
+
+=item examples/mfh.pl          -- demo for use of MockFileHandle
+
+=item examples/readScalar.pl   -- shows how to use IO::Scalar as the source of a Zip read
+
+=item examples/selfex.pl       -- a brief example of a self-extracting Zip
+
+=item examples/unzipAll.pl     -- uses Archive::Zip::Tree to unzip an entire Zip
+
+=item examples/updateZip.pl    -- shows how to read/modify/write a Zip
+
+=item examples/updateTree.pl   -- shows how to update a Zip in place
+
+=item examples/writeScalar.pl  -- shows how to use IO::Scalar as the destination of a Zip write
+
+=item examples/writeScalar2.pl -- shows how to use IO::String as the destination of a Zip write
+
+=item examples/zip.pl          -- Constructs a Zip file
+
+=item examples/zipcheck.pl     -- One way to check a Zip file for validity
+
+=item examples/zipinfo.pl      -- Prints out information about a Zip archive file
+
+=item examples/zipGrep.pl      -- Searches for text in Zip files
+
+=item examples/ziptest.pl      -- Lists a Zip file and checks member CRCs
+
+=item examples/ziprecent.pl    -- Puts recent files into a zipfile
+
+=item examples/ziptest.pl      -- Another way to check a Zip file for validity
+
+=back
+
+=head1 Can't Read/modify/write same Zip file
+
+B<Q:> Why can't I open a Zip file, add a member, and write it back? I get an
+error message when I try.
+
+B<A:> Because Archive::Zip doesn't (and can't, generally) read file contents into memory,
+the original Zip file is required to stay around until the writing of the new
+file is completed.
+
+The best way to do this is to write the Zip to a temporary file and then
+rename the temporary file to have the old name (possibly after deleting the
+old one).
+
+Archive::Zip v1.02 added the archive methods C<overwrite()> and
+C<overwriteAs()> to do this simply and carefully.
+
+See C<examples/updateZip.pl> for an example of this technique.
+
+=head1 File creation time not set
+
+B<Q:> Upon extracting files, I see that their modification (and access) times are
+set to the time in the Zip archive. However, their creation time is not set to
+the same time. Why?
+
+B<A:> Mostly because Perl doesn't give cross-platform access to I<creation time>.
+Indeed, many systems (like Unix) don't support such a concept.
+However, if yours does, you can easily set it. Get the modification time from
+the member using C<lastModTime()>.
+
+=head1 Can't use Archive::Zip on gzip files
+
+B<Q:> Can I use Archive::Zip to extract Unix gzip files?
+
+B<A:> No.
+
+There is a distinction between Unix gzip files, and Zip archives that
+also can use the gzip compression.
+
+Depending on the format of the gzip file, you can use L<Compress::Raw::Zlib>, or
+L<Archive::Tar> to decompress it (and de-archive it in the case of Tar files).
+
+You can unzip PKZIP/WinZip/etc/ archives using Archive::Zip (that's what
+it's for) as long as any compressed members are compressed using
+Deflate compression.
+
+=head1 Add a directory/tree to a Zip
+
+B<Q:> How can I add a directory (or tree) full of files to a Zip?
+
+B<A:> You can use the Archive::Zip::addTree*() methods:
+
+   use Archive::Zip;
+   my $zip = Archive::Zip->new();
+   # add all readable files and directories below . as xyz/*
+   $zip->addTree( '.', 'xyz' );
+   # add all readable plain files below /abc as def/*
+   $zip->addTree( '/abc', 'def', sub { -f && -r } );
+   # add all .c files below /tmp as stuff/*
+   $zip->addTreeMatching( '/tmp', 'stuff', '\.c$' );
+   # add all .o files below /tmp as stuff/* if they aren't writable
+   $zip->addTreeMatching( '/tmp', 'stuff', '\.o$', sub { ! -w } );
+   # add all .so files below /tmp that are smaller than 200 bytes as stuff/*
+   $zip->addTreeMatching( '/tmp', 'stuff', '\.o$', sub { -s < 200 } );
+   # and write them into a file
+   $zip->writeToFileNamed('xxx.zip');
+
+=head1 Extract a directory/tree
+
+B<Q:> How can I extract some (or all) files from a Zip into a different
+directory?
+
+B<A:> You can use the Archive::Zip::extractTree() method:
+??? ||
+
+   # now extract the same files into /tmpx
+   $zip->extractTree( 'stuff', '/tmpx' );
+
+=head1 Update a directory/tree
+
+B<Q:> How can I update a Zip from a directory tree, adding or replacing only
+the newer files?
+
+B<A:> You can use the Archive::Zip::updateTree() method that was added in version 1.09.
+
+=head1 Zip times might be off by 1 second
+
+B<Q:> It bothers me greatly that my file times are wrong by one second about half
+the time. Why don't you do something about it?
+
+B<A:> Get over it. This is a result of the Zip format storing times in DOS
+format, which has a resolution of only two seconds.
+
+=head1 Zip times don't include time zone information
+
+B<Q:> My file times don't respect time zones. What gives?
+
+B<A:> If this is important to you, please submit patches to read the various
+Extra Fields that encode times with time zones. I'm just using the DOS
+Date/Time, which doesn't have a time zone.
+
+=head1 How do I make a self-extracting Zip
+
+B<Q:> I want to make a self-extracting Zip file. Can I do this?
+
+B<A:> Yes. You can write a self-extracting archive stub (that is, a version of
+unzip) to the output filehandle that you pass to writeToFileHandle(). See
+examples/selfex.pl for how to write a self-extracting archive.
+
+However, you should understand that this will only work on one kind of
+platform (the one for which the stub was compiled).
+
+=head1 How can I deal with Zips with prepended garbage (i.e. from Sircam)
+
+B<Q:> How can I tell if a Zip has been damaged by adding garbage to the
+beginning or inside the file?
+
+B<A:> I added code for this for the Amavis virus scanner. You can query archives
+for their 'eocdOffset' property, which should be 0:
+
+  if ($zip->eocdOffset > 0)
+    { warn($zip->eocdOffset . " bytes of garbage at beginning or within Zip") }
+
+When members are extracted, this offset will be used to adjust the start of
+the member if necessary.
+
+=head1 Can't extract Shrunk files
+
+B<Q:> I'm trying to extract a file out of a Zip produced by PKZIP, and keep
+getting this error message:
+
+  error: Unsupported compression combination: read 6, write 0
+
+B<A:> You can't uncompress this archive member. Archive::Zip only supports uncompressed
+members, and compressed members that are compressed using the compression
+supported by Compress::Raw::Zlib. That means only Deflated and Stored members.
+
+Your file is compressed using the Shrink format, which is not supported by
+Compress::Raw::Zlib.
+
+You could, perhaps, use a command-line UnZ

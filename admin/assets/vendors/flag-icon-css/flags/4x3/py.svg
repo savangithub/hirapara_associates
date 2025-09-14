@@ -1,0 +1,390 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-py" viewBox="0 0 640 480">
+  <path fill="#0038a8" d="M0 319.7h640V480H0z"/>
+  <path fill="#fff" d="M0 160h640v160H0z"/>
+  <path fill="#d52b1e" d="M0 0h640v160H0z"/>
+  <g fill="none" stroke="#000" transform="translate(-116.4) scale(1.45455)">
+    <circle cx="300" cy="165" r="42.2" stroke-width="1.1"/>
+    <circle cx="300" cy="165" r="34.7" stroke-width=".5"/>
+    <circle cx="300" cy="165" r="26.6" stroke-width=".4"/>
+  </g>
+  <path d="m287.3 263.7-7.1 4.2-2.2-3.7a6.2 6.2 0 0 1-.7-1.6 2 2 0 0 1 .1-1.3c.2-.4.5-.7 1-1 .4-.2.7-.3 1.1-.3a2.3 2.3 0 0 1 1.1.2l.8.6v-1.3l.3-.5 1.5-2.3 1.4 2.5-1.4 2.4-.3.8.1.6.1.2 3-1.7zm-5.5.3-.6-1-.4-.5a.7.7 0 0 0-.5-.2.8.8 0 0 0-.5.1l-.4.6c0 .2.1.5.4.9l.5 1zm-6.7-5.5-2.2-6.5 1.7-.6 1.3 4.1 1.3-.4-1.3-3.8 1.6-.5 1.3 3.7 1.5-.5-1.4-4.2 1.8-.5 2.2 6.6zm-2.9-9.7-.4-4.2c-.2-1 0-1.6.4-2.1.4-.6 1-.9 1.8-1 .8 0 1.5.1 2 .6.5.4.8 1.2 1 2.2l.1 1.4 3-.4.4 2.6zm3.3-3-.1-.6c0-.5-.2-.8-.4-1a.8.8 0 0 0-.7-.2 1 1 0 0 0-.6.4c-.2.1-.2.5-.2 1l.1.7zm-3.5-12.5.3-2.6 4.8.6a4.2 4.2 0 0 1 1.4.4c.4.2.8.4 1 .8.4.3.5.7.6 1 .2.6.2 1.2.1 1.9l-.2 1.3c-.1.5-.3.8-.5 1.1a3 3 0 0 1-1.8 1.3h-1.4l-4.9-.5.3-2.5 5 .5c.4 0 .8 0 1-.2.4-.2.5-.6.6-1a1.4 1.4 0 0 0-.3-1c-.2-.4-.6-.5-1-.6zm1-6 1.7-4.6c.2-.8.6-1.3 1.1-1.5a2 2 0 0 1 1.6-.2c.5.2.8.5 1 .9.2.3.3.6.3 1 .3-.5.7-.8 1.1-1a2 2 0 0 1 1.4 0 2.2 2.2 0 0 1 1.5 1.8v1l-.3 1-1.5 4.2zm4-1.4.4-1.1c0-.4.1-.7 0-.8 0-.2-.2-.4-.4-.5a.7.7 0 0 0-.6 0c-.2.2-.4.4-.5.8l-.4 1zm3 1 .5-1.2c.1-.4.2-.7 0-1a.8.8 0 0 0-.4-.4.7.7 0 0 0-.7 0l-.5.9-.4 1.2zm-3-9.6 1.3-2.2 5.4 3.2 2-3.4 1.8 1-3.4 5.6zm5-7.6 1.6-2 6.4 5.3-1.6 2zm11.1-4.3 2.2-1c.3.6.4 1.2.5 1.7a3.1 3.1 0 0 1-.3 1.5 4.5 4.5 0 0 1-1.2 1.5 4 4 0 0 1-2 1.1 3.5 3.5 0 0 1-2 0 4.7 4.7 0 0 1-2-1.6c-1-1-1.4-2-1.3-3.1a4.2 4.2 0 0 1 1.6-2.9 4.2 4.2 0 0 1 2.3-1c.7-.1 1.5 0 2.3.5l-1.4 1.9a1.9 1.9 0 0 0-.6-.3 1.5 1.5 0 0 0-.7 0 1.5 1.5 0 0 0-.6.4 1.5 1.5 0 0 0-.6 1.4c0 .4.4.9.8 1.4.6.7 1.1 1.1 1.6 1.2.4 0 .8 0 1.2-.4.4-.3.6-.6.6-1s-.1-.8-.4-1.3zm8.8-3.2-2.5 1.4.3 1.4-2.3 1.2-1.2-8.7 2.5-1.3 6.6 5.8-2.4 1.3zm-1.3-1.3-2.2-2.2.6 3zm7.8-8.5 3.8-.6a4.6 4.6 0 0 1 1.8 0c.5.1 1 .3 1.3.7s.7.7.9 1.2c.2.4.4 1 .4 1.5.2.9.2 1.6.1 2a3.4 3.4 0 0 1-.6 1.4 2.7 2.7 0 0 1-1 .9 6 6 0 0 1-1.5.5l-3.7.6zm2.9 1.4.8 4.5.6-.1c.5-.1.9-.2 1-.4.3-.1.4-.4.5-.7v-1.4c-.2-.9-.5-1.4-.8-1.7-.3-.3-.8-.4-1.5-.3zm7.8-2.8 6.8.3v1.8l-4.3-.2-.1 1.3 4 .2-.1 1.7-4-.2v1.6l4.4.2-.1 1.9-7-.3zm10 .8 2.4.6-1.5 6 4 1-.6 2-6.3-1.6zm13.2 4.4 3.7 2.2c.8.4 1.3 1 1.4 1.6.2.6 0 1.3-.3 2a2.5 2.5 0 0 1-1.7 1.3c-.6.1-1.4 0-2.3-.6l-1.2-.7-1.6 2.6-2.2-1.3zm.4 4.4.6.3 1 .3a.8.8 0 0 0 .6-.4 1 1 0 0 0 0-.7c0-.3-.2-.5-.6-.8l-.6-.3zm7.2 9.6-2.1-2-1.2.7-2-1.7 8-4 2 2-3.4 8.1-2-1.8zm.8-1.7 1.4-2.8-2.7 1.6zm1 5.5 6.9-4.7 2.3 3.5 1 1.7-.1 1.2a2.3 2.3 0 0 1-1 1.1c-.3.3-.7.4-1 .4a2.3 2.3 0 0 1-1.2-.2c-.2 0-.5-.3-.8-.5l.2.7-.2.6a3.3 3.3 0 0 1-.2.6l-1.3 2.3-1.6-2.3 1.3-2.6.3-.7a1 1 0 0 0-.2-.7l-.1-.2-2.8 2zm5.5-.6.7.9.4.4c.2.2.3.2.5.2a.8.8 0 0 0 .5-.1.8.8 0 0 0 .3-.6c0-.2 0-.5-.3-.9l-.7-.9zm2.6 12.4-1-2.8-1.5.2-1-2.5 8.9-.1 1 2.6-6.5 6-1-2.6zm1.5-1.2 2.4-2-3.1.3zm2.1 9 1.7-.2.6 3.9-3.5.5a8 8 0 0 1-1.3-1.8 6.8 6.8 0 0 1-.6-2 5 5 0 0 1 .1-2.5 4 4 0 0 1 1.3-1.6 4.9 4.9 0 0 1 2.2-.9 5 5 0 0 1 2.4.2 3.6 3.6 0 0 1 1.7 1.4c.4.6.6 1.3.8 2.2v2a2.7 2.7 0 0 1-.6 1.3c-.3.4-.7.6-1.2.9l-.8-2.4c.3-.1.5-.3.7-.6s.1-.6 0-1a1.7 1.7 0 0 0-.7-1.2c-.4-.3-1-.4-2-.2a3 3 0 0 0-1.7.7c-.4.4-.5 1-.4 1.5 0 .3.1.6.3.8l.5.8h.8zm5.4 12-.2 2.6-5-.4a4.2 4.2 0 0 1-1.3-.4 3 3 0 0 1-1-.8 3 3 0 0 1-.6-1.1 5.1 5.1 0 0 1-.2-1.8l.2-1.3.5-1.2a3 3 0 0 1 .8-.8 2.6 2.6 0 0 1 1-.4 4.9 4.9 0 0 1 1.4-.2l5 .5-.3 2.5-5-.4c-.5 0-.9 0-1.1.3a1.4 1.4 0 0 0-.5 1c0 .4 0 .8.3 1 .2.3.5.5 1 .5zm-9.1 8.8.9-2.8-1.2-.8.8-2.5 7 5.6-1 2.6-8.8.4.9-2.5zm1.9 0 3 .1-2.5-1.8zm3 6.8-1.5 2.4h-3.3l1.5 2.9-1.4 2.4-2.5-5.2-3-1.8 1.4-2.2 3 1.8z"/>
+  <g fill="#009b3a" stroke="#000" stroke-width=".1">
+    <path d="M328.1 211.3s23.4 10.1 19.3 30.9c-4 20.8-17 20.6-22.2 23-5 2.2-8.6 5.5-10.6 5-2-.4-4.7-2-4.7-2s-.2 3.5 3.9 4c4.1.7 9.5-5.3 12-6 2.6-.6 18.5-2.4 22.4-23.5 4.5-22.6-20-30.7-20-31.4z"/>
+    <path d="M339.9 215.8a3.2.8 75.1 0 1-1.5 0 3.2.8 75.1 1 1     croak "unexpected return to Die";
+    }
+
+    my $md5_hex = sub {
+        my ($buf) = @_;
+
+        # Evaluate the MD5 sum for a string
+        # Patch for [rt.cpan.org #88020]
+        # Use utf8::encode since md5_hex() only operates on bytes.
+        # my $digest = md5_hex( utf8::encode($sink_buffer) );
+
+        # Note added 20180114: the above patch did not work correctly.  I'm not
+        # sure why.  But switching to the method recommended in the Perl 5
+        # documentation for Encode worked.  According to this we can either use
+        #    $octets = encode_utf8($string)  or equivalently
+        #    $octets = encode("utf8",$string)
+        # and then calculate the checksum.  So:
+        my $octets = Encode::encode( "utf8", $buf );
+        my $digest = md5_hex($octets);
+        return $digest;
+    };
+
+    # extract various dump parameters
+    my $dump_options_type     = $input_hash{'dump_options_type'};
+    my $dump_options          = $get_hash_ref->('dump_options');
+    my $dump_getopt_flags     = $get_hash_ref->('dump_getopt_flags');
+    my $dump_options_category = $get_hash_ref->('dump_options_category');
+    my $dump_abbreviations    = $get_hash_ref->('dump_abbreviations');
+    my $dump_options_range    = $get_hash_ref->('dump_options_range');
+
+    # validate dump_options_type
+    if ( defined($dump_options) ) {
+        unless ( defined($dump_options_type) ) {
+            $dump_options_type = 'perltidyrc';
+        }
+        unless ( $dump_options_type =~ /^(perltidyrc|full)$/ ) {
+            croak <<EOM;
+------------------------------------------------------------------------
+Please check value of -dump_options_type in call to perltidy;
+saw: '$dump_options_type' 
+expecting: 'perltidyrc' or 'full'
+------------------------------------------------------------------------
+EOM
+
+        }
+    }
+    else {
+        $dump_options_type = "";
+    }
+
+    if ($user_formatter) {
+
+        # if the user defines a formatter, there is no output stream,
+        # but we need a null stream to keep coding simple
+        $destination_stream = Perl::Tidy::DevNull->new();
+    }
+
+    # see if ARGV is overridden
+    if ( defined($argv) ) {
+
+        my $rargv = ref $argv;
+        if ( $rargv eq 'SCALAR' ) { $argv = ${$argv}; $rargv = undef }
+
+        # ref to ARRAY
+        if ($rargv) {
+            if ( $rargv eq 'ARRAY' ) {
+                @ARGV = @{$argv};
+            }
+            else {
+                croak <<EOM;
+------------------------------------------------------------------------
+Please check value of -argv in call to perltidy;
+it must be a string or ref to ARRAY but is: $rargv
+------------------------------------------------------------------------
+EOM
+            }
+        }
+
+        # string
+        else {
+            my ( $rargv, $msg ) = parse_args($argv);
+            if ($msg) {
+                Die(<<EOM);
+Error parsing this string passed to to perltidy with 'argv': 
+$msg
+EOM
+            }
+            @ARGV = @{$rargv};
+        }
+    }
+
+    my $rpending_complaint;
+    ${$rpending_complaint} = "";
+    my $rpending_logfile_message;
+    ${$rpending_logfile_message} = "";
+
+    my ( $is_Windows, $Windows_type ) = look_for_Windows($rpending_complaint);
+
+    # VMS file names are restricted to a 40.40 format, so we append _tdy
+    # instead of .tdy, etc. (but see also sub check_vms_filename)
+    my $dot;
+    my $dot_pattern;
+    if ( $^O eq 'VMS' ) {
+        $dot         = '_';
+        $dot_pattern = '_';
+    }
+    else {
+        $dot         = '.';
+        $dot_pattern = '\.';    # must escape for use in regex
+    }
+
+    #---------------------------------------------------------------
+    # get command line options
+    #---------------------------------------------------------------
+    my ( $rOpts, $config_file, $rraw_options, $roption_string,
+        $rexpansion, $roption_category, $roption_range )
+      = process_command_line(
+        $perltidyrc_stream,  $is_Windows, $Windows_type,
+        $rpending_complaint, $dump_options_type,
+      );
+
+    my $saw_extrude = ( grep { m/^-extrude$/ } @{$rraw_options} ) ? 1 : 0;
+    my $saw_pbp =
+      ( grep { m/^-(pbp|perl-best-practices)$/ } @{$rraw_options} ) ? 1 : 0;
+
+    #---------------------------------------------------------------
+    # Handle requests to dump information
+    #---------------------------------------------------------------
+
+    # return or exit immediately after all dumps
+    my $quit_now = 0;
+
+    # Getopt parameters and their flags
+    if ( defined($dump_getopt_flags) ) {
+        $quit_now = 1;
+        foreach my $op ( @{$roption_string} ) {
+            my $opt  = $op;
+            my $flag = "";
+
+            # Examples:
+            #  some-option=s
+            #  some-option=i
+            #  some-option:i
+            #  some-option!
+            if ( $opt =~ /(.*)(!|=.*|:.*)$/ ) {
+                $opt  = $1;
+                $flag = $2;
+            }
+            $dump_getopt_flags->{$opt} = $flag;
+        }
+    }
+
+    if ( defined($dump_options_category) ) {
+        $quit_now = 1;
+        %{$dump_options_category} = %{$roption_category};
+    }
+
+    if ( defined($dump_options_range) ) {
+        $quit_now = 1;
+        %{$dump_options_range} = %{$roption_range};
+    }
+
+    if ( defined($dump_abbreviations) ) {
+        $quit_now = 1;
+        %{$dump_abbreviations} = %{$rexpansion};
+    }
+
+    if ( defined($dump_options) ) {
+        $quit_now = 1;
+        %{$dump_options} = %{$rOpts};
+    }
+
+    Exit(0) if ($quit_now);
+
+    # make printable string of options for this run as possible diagnostic
+    my $readable_options = readable_options( $rOpts, $roption_string );
+
+    # dump from command line
+    if ( $rOpts->{'dump-options'} ) {
+        print STDOUT $readable_options;
+        Exit(0);
+    }
+
+    #---------------------------------------------------------------
+    # check parameters and their interactions
+    #---------------------------------------------------------------
+    my $tabsize =
+      check_options( $rOpts, $is_Windows, $Windows_type, $rpending_complaint );
+
+    if ($user_formatter) {
+        $rOpts->{'format'} = 'user';
+    }
+
+    # there must be one entry here for every possible format
+    my %default_file_extension = (
+        tidy => 'tdy',
+        html => 'html',
+        user => '',
+    );
+
+    # be sure we have a valid output format
+    unless ( exists $default_file_extension{ $rOpts->{'format'} } ) {
+        my $formats = join ' ',
+          sort map { "'" . $_ . "'" } keys %default_file_extension;
+        my $fmt = $rOpts->{'format'};
+        Die("-format='$fmt' but must be one of: $formats\n");
+    }
+
+    my $output_extension = make_extension( $rOpts->{'output-file-extension'},
+        $default_file_extension{ $rOpts->{'format'} }, $dot );
+
+    # If the backup extension contains a / character then the backup should
+    # be deleted when the -b option is used.   On older versions of
+    # perltidy this will generate an error message due to an illegal
+    # file name.
+    #
+    # A backup file will still be generated but will be deleted
+    # at the end.  If -bext='/' then this extension will be
+    # the default 'bak'.  Otherwise it will be whatever characters
+    # remains after all '/' characters are removed.  For example:
+    # -bext         extension     slashes
+    #  '/'          bak           1
+    #  '/delete'    delete        1
+    #  'delete/'    delete        1
+    #  '/dev/null'  devnull       2    (Currently not allowed)
+    my $bext          = $rOpts->{'backup-file-extension'};
+    my $delete_backup = ( $rOpts->{'backup-file-extension'} =~ s/\///g );
+
+    # At present only one forward slash is allowed.  In the future multiple
+    # slashes may be allowed to allow for other options
+    if ( $delete_backup > 1 ) {
+        Die("-bext=$bext contains more than one '/'\n");
+    }
+
+    my $backup_extension =
+      make_extension( $rOpts->{'backup-file-extension'}, 'bak', $dot );
+
+    my $html_toc_extension =
+      make_extension( $rOpts->{'html-toc-extension'}, 'toc', $dot );
+
+    my $html_src_extension =
+      make_extension( $rOpts->{'html-src-extension'}, 'src', $dot );
+
+    # check for -b option;
+    # silently ignore unless beautify mode
+    my $in_place_modify = $rOpts->{'backup-and-modify-in-place'}
+      && $rOpts->{'format'} eq 'tidy';
+
+    # Turn off -b with warnings in case of conflicts with other options.
+    # NOTE: Do this silently, without warnings, if there is a source or
+    # destination stream, or standard output is used.  This is because the -b
+    # flag may have been in a .perltidyrc file and warnings break
+    # Test::NoWarnings.  See email discussion with Merijn Brand 26 Feb 2014.
+    if ($in_place_modify) {
+        if (   $rOpts->{'standard-output'}
+            || $destination_stream
+            || ref $source_stream
+            || $rOpts->{'outfile'}
+            || defined( $rOpts->{'output-path'} ) )
+        {
+            $in_place_modify = 0;
+        }
+    }
+
+    # Turn off assert-tidy and assert-untidy unless we are tidying files
+    if ( $rOpts->{'format'} ne 'tidy' ) {
+        if ( $rOpts->{'assert-tidy'} ) {
+            $rOpts->{'assert-tidy'} = 0;
+            Warn("ignoring --assert-tidy, --format is not 'tidy'\n");
+        }
+        if ( $rOpts->{'assert-untidy'} ) {
+            $rOpts->{'assert-untidy'} = 0;
+            Warn("ignoring --assert-untidy, --format is not 'tidy'\n");
+        }
+    }
+
+    Perl::Tidy::Formatter::check_options($rOpts);
+    Perl::Tidy::Tokenizer::check_options($rOpts);
+    if ( $rOpts->{'format'} eq 'html' ) {
+        Perl::Tidy::HtmlWriter->check_options($rOpts);
+    }
+
+    # make the pattern of file extensions that we shouldn't touch
+    my $forbidden_file_extensions = "(($dot_pattern)(LOG|DEBUG|ERR|TEE)";
+    if ($output_extension) {
+        my $ext = quotemeta($output_extension);
+        $forbidden_file_extensions .= "|$ext";
+    }
+    if ( $in_place_modify && $backup_extension ) {
+        my $ext = quotemeta($backup_extension);
+        $forbidden_file_extensions .= "|$ext";
+    }
+    $forbidden_file_extensions .= ')$';
+
+    # Create a diagnostics object if requested;
+    # This is only useful for code development
+    my $diagnostics_object = undef;
+    if ( $rOpts->{'DIAGNOSTICS'} ) {
+        $diagnostics_object = Perl::Tidy::Diagnostics->new();
+    }
+
+    # no filenames should be given if input is from an array
+    if ($source_stream) {
+        if ( @ARGV > 0 ) {
+            Die(
+"You may not specify any filenames when a source array is given\n"
+            );
+        }
+
+        # we'll stuff the source array into ARGV
+        unshift( @ARGV, $source_stream );
+
+        # No special treatment for source stream which is a filename.
+        # This will enable checks for binary files and other bad stuff.
+        $source_stream = undef unless ref($source_stream);
+    }
+
+    # use stdin by default if no source array and no args
+    else {
+        unshift( @ARGV, '-' ) unless @ARGV;
+    }
+
+    # Flag for loading module Unicode::GCString for evaluating text width:
+    #   undef = ok to use but not yet loaded
+    #       0 = do not use; failed to load or not wanted
+    #       1 = successfully loaded and ok to use
+    # The module is not actually loaded unless/until it is needed
+    my $loaded_unicode_gcstring;
+    if ( !$rOpts->{'use-unicode-gcstring'} ) {
+        $loaded_unicode_gcstring = 0;
+    }
+
+    #---------------------------------------------------------------
+    # Ready to go...
+    # main loop to process all files in argument list
+    #---------------------------------------------------------------
+    my $number_of_files = @ARGV;
+    my $formatter       = undef;
+    my $tokenizer       = undef;
+
+    # If requested, process in order of increasing file size
+    # This can significantly reduce perl's virtual memory usage during testing.
+    if ( $number_of_files > 1 && $rOpts->{'file-size-order'} ) {
+        @ARGV =
+          map  { $_->[0] }
+          sort { $a->[1] <=> $b->[1] }
+          map  { [ $_, -e $_ ? -s $_ : 0 ] } @ARGV;
+    }
+
+    # Remove duplicate filenames.  Otherwise, for example if the user entered
+    #     perltidy -b myfile.pl myfile.pl
+    # the backup version of the original would be lost.
+    if ( $number_of_files > 1 ) {
+        my %seen = ();
+        @ARGV = grep { !$seen{$_}++ } @ARGV;
+    }
+
+    while ( my $input_file = shift @ARGV ) {
+        my $fileroot;
+        my @input_file_stat;
+        my $display_name;
+
+        #---------------------------------------------------------------
+        # prepare this input stream
+        #---------------------------------------------------------------
+        if ($source_stream) {
+            $fileroot     = "perltidy";
+            $display_name = "<source_stream>";
+
+            # If the source is from an array or string, then .LOG output
+            # is only possible if a logfile stream is specified.  This prevents
+            # unexpected perltidy.LOG files.
+            if ( !defined($logfile_stream) ) {
+                $logfile_stream = Perl::Tidy::DevNull->new();
+
+                # Likewise for .TEE and .DEBUG output
+            }
+            if ( !defined($teefile_stream) ) 

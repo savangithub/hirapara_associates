@@ -1,0 +1,652 @@
+<?php declare(strict_types=1);
+/*
+ * This file is part of PHPUnit.
+ *
+ * (c) Sebastian Bergmann <sebastian@phpunit.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+namespace PHPUnit\Framework\MockObject\Builder;
+
+use function array_flip;
+use function array_key_exists;
+use function array_map;
+use function array_merge;
+use function array_pop;
+use function assert;
+use function count;
+use function is_string;
+use function range;
+use function strtolower;
+use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit\Framework\InvalidArgumentException;
+use PHPUnit\Framework\MockObject\ConfigurableMethod;
+use PHPUnit\Framework\MockObject\IncompatibleReturnValueException;
+use PHPUnit\Framework\MockObject\InvocationHandler;
+use PHPUnit\Framework\MockObject\Matcher;
+use PHPUnit\Framework\MockObject\MatcherAlreadyRegisteredException;
+use PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException;
+use PHPUnit\Framework\MockObject\MethodNameAlreadyConfiguredException;
+use PHPUnit\Framework\MockObject\MethodNameNotConfiguredException;
+use PHPUnit\Framework\MockObject\MethodParametersAlreadyConfiguredException;
+use PHPUnit\Framework\MockObject\Rule;
+use PHPUnit\Framework\MockObject\Runtime\PropertyHook;
+use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
+use PHPUnit\Framework\MockObject\Stub\Exception;
+use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
+use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
+use PHPUnit\Framework\MockObject\Stub\ReturnReference;
+use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
+use PHPUnit\Framework\MockObject\Stub\ReturnStub;
+use PHPUnit\Framework\MockObject\Stub\ReturnValueMap;
+use PHPUnit\Framework\MockObject\Stub\Stub;
+use Throwable;
+
+/**
+ * @no-named-arguments Parameter names are not covered by the backward compatibility promise for PHPUnit
+ */
+final class InvocationMocker implements InvocationStubber, MethodNameMatch
+{
+    private readonly InvocationHandler $invocationHandler;
+    private readonly Matcher $matcher;
+
+    /**
+     * @var list<ConfigurableMethod>
+     */
+    private readonly array $configurableMethods;
+
+    /**
+     * @var ?array<string, int>
+     */
+    private ?array $configurableMethodNames = null;
+
+    public function __construct(InvocationHandler $handler, Matcher $matcher, ConfigurableMethod ...$configurableMethods)
+    {
+        $this->invocationHandler   = $handler;
+        $this->matcher             = $matcher;
+        $this->configurableMethods = $configurableMethods;
+    }
+
+    /**
+     * @throws MatcherAlreadyRegisteredException
+     *
+     * @return $this
+     */
+    public function id(string $id): self
+    {
+        $this->invocationHandler->registerMatcher($id, $this->matcher);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function will(Stub $stub): Identity
+    {
+        $this->matcher->setStub($stub);
+
+        return $this;
+    }
+
+    /**
+     * @throws IncompatibleReturnValueException
+     */
+    public function willReturn(mixed $value, mixed ...$nextValues): self
+    {
+        if (count($nextValues) === 0) {
+            $this->ensureTypeOfReturnValues([$value]);
+
+            $stub = $value instanceof Stub ? $value : new ReturnStub($value);
+
+            return $this->will($stub);
+        }
+
+        $values = array_merge([$value], $nextValues);
+
+        $this->ensureTypeOfReturnValues($values);
+
+        $stub = new ConsecutiveCalls($values);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnReference(mixed &$reference): self
+    {
+        $stub = new ReturnReference($reference);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnMap(array $valueMap): self
+    {
+        $method = $this->configuredMethod();
+
+        assert($method instanceof ConfigurableMethod);
+
+        $numberOfParameters = $method->numberOfParameters();
+        $defaultValues      = $method->defaultParameterValues();
+        $hasDefaultValues   = !empty($defaultValues);
+
+        $_valueMap = [];
+
+        foreach ($valueMap as $mapping) {
+            $numberOfConfiguredParameters = count($mapping) - 1;
+
+            if ($numberOfConfiguredParameters === $numberOfParameters || !$hasDefaultValues) {
+                $_valueMap[] = $mapping;
+
+                continue;
+            }
+
+            $_mapping    = [];
+            $returnValue = array_pop($mapping);
+
+            foreach (range(0, $numberOfParameters - 1) as $i) {
+                if (isset($mapping[$i])) {
+                    $_mapping[] = $mapping[$i];
+
+                    continue;
+                }
+
+                if (isset($defaultValues[$i])) {
+                    $_mapping[] = $defaultValues[$i];
+                }
+            }
+
+            $_mapping[]  = $returnValue;
+            $_valueMap[] = $_mapping;
+        }
+
+        $stub = new ReturnValueMap($_valueMap);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnArgument(int $argumentIndex): self
+    {
+        $stub = new ReturnArgument($argumentIndex);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnCallback(callable $callback): self
+    {
+        $stub = new ReturnCallback($callback);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnSelf(): self
+    {
+        $stub = new ReturnSelf;
+
+        return $this->will($stub);
+    }
+
+    public function willReturnOnConsecutiveCalls(mixed ...$values): self
+    {
+        $stub = new ConsecutiveCalls($values);
+
+        return $this->will($stub);
+    }
+
+    public function willThrowException(Throwable $exception): self
+    {
+        $stub = new Exception($exception);
+
+        return $this->will($stub);
+    }
+
+    /**
+     * @return $this
+     */
+    public function after(string $id): self
+    {
+        $this->matcher->setAfterMatchBuilderId($id);
+
+        return $this;
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\Exception
+     * @throws MethodNameNotConfiguredException
+     * @throws MethodParametersAlreadyConfiguredException
+     *
+     * @return $this
+     */
+    public function with(mixed ...$arguments): self
+    {
+        $this->ensureParametersCanBeConfigured();
+
+        $this->matcher->setParametersRule(new Rule\Parameters($arguments));
+
+        return $this;
+    }
+
+    /**
+     * @throws MethodNameNotConfiguredException
+     * @throws MethodParametersAlreadyConfiguredException
+     *
+     * @return $this
+     */
+    public function withAnyParameters(): self
+    {
+        $this->ensureParametersCanBeConfigured();
+
+        $this->matcher->setParametersRule(new Rule\AnyParameters);
+
+        return $this;
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws MethodCannotBeConfiguredException
+     * @throws MethodNameAlreadyConfiguredException
+     *
+     * @return $this
+     */
+    public function method(Constraint|PropertyHook|string $constraint): self
+    {
+        if ($this->matcher->hasMethodNameRule()) {
+            throw new MethodNameAlreadyConfiguredException;
+        }
+
+        if ($constraint instanceof PropertyHook) {
+            $constraint = $constraint->asString();
+        }
+
+        if (is_string($constraint)) {
+            $this->configurableMethodNames ??= array_flip(
+                array_map(
+                    static fn (ConfigurableMethod $configurable) => strtolower($configurable->name()),
+                    $this->configurableMethods,
+                ),
+            );
+
+            if (!array_key_exists(strtolower($constraint), $this->configurableMethodNames)) {
+                throw new MethodCannotBeConfiguredException($constraint);
+            }
+        }
+
+        $this->matcher->setMethodNameRule(new Rule\MethodName($constraint));
+
+        return $this;
+    }
+
+    /**
+     * @throws MethodNameNotConfiguredException
+     * @throws MethodParametersAlreadyConfiguredException
+     */
+    private function ensureParametersCanBeConfigured(): void
+    {
+        if (!$this->matcher->hasMethodNameRule()) {
+            throw new MethodNameNotConfiguredException;
+        }
+
+        if ($this->matcher->hasParametersRule()) {
+            throw new MethodParametersAlreadyConfiguredException;
+<?php
+
+/*
+ * This file is part of Twig.
+ *
+ * (c) Fabien Potencier
+ * (c) Armin Ronacher
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Twig\Node\Expression;
+
+use Twig\Compiler;
+use Twig\Extension\SandboxExtension;
+use Twig\Template;
+
+class GetAttrExpression extends AbstractExpression
+{
+    public function __construct(AbstractExpression $node, AbstractExpression $attribute, ?AbstractExpression $arguments, string $type, int $lineno)
+    {
+        $nodes = ['node' => $node, 'attribute' => $attribute];
+        if (null !== $arguments) {
+            $nodes['arguments'] = $arguments;
+        }
+
+        parent::__construct($nodes, ['type' => $type, 'is_defined_test' => false, 'ignore_strict_check' => false, 'optimizable' => true], $lineno);
+    }
+
+    public function compile(Compiler $compiler): void
+    {
+        $env = $compiler->getEnvironment();
+
+        // optimize array calls
+        if (
+            $this->getAttribute('optimizable')
+            && (!$env->isStrictVariables() || $this->getAttribute('ignore_strict_check'))
+            && !$this->getAttribute('is_defined_test')
+            && Template::ARRAY_CALL === $this->getAttribute('type')
+        ) {
+            $var = '$'.$compiler->getVarName();
+            $compiler
+                ->raw('(('.$var.' = ')
+                ->subcompile($this->getNode('node'))
+                ->raw(') && is_array(')
+                ->raw($var)
+                ->raw(') || ')
+                ->raw($var)
+                ->raw(' instanceof ArrayAccess ? (')
+                ->raw($var)
+                ->raw('[')
+                ->subcompile($this->getNode('attribute'))
+                ->raw('] ?? null) : null)')
+            ;
+
+            return;
+        }
+
+        $compiler->raw('twig_get_attribute($this->env, $this->source, ');
+
+        if ($this->getAttribute('ignore_strict_check')) {
+            $this->getNode('node')->setAttribute('ignore_strict_check', true);
+        }
+
+        $compiler
+            ->subcompile($this->getNode('node'))
+            ->raw(', ')
+            ->subcompile($this->getNode('attribute'))
+        ;
+
+        if ($this->hasNode('arguments')) {
+            $compiler->raw(', ')->subcompile($this->getNode('arguments'));
+        } else {
+            $compiler->raw(', []');
+        }
+
+        $compiler->raw(', ')
+            ->repr($this->getAttribute('type'))
+            ->raw(', ')->repr($this->getAttribute('is_defined_test'))
+            ->raw(', ')->repr($this->getAttribute('ignore_strict_check'))
+            ->raw(', ')->repr($env->hasExtension(SandboxExtension::class))
+            ->raw(', ')->repr($this->getNode('node')->getTemplateLine())
+            ->raw(')')
+        ;
+    }
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            9/Ì8/3/339/399/3993393933/3//////93933/93 /Ì3/3/9Ì33299/Ì8/Ì2/Ì/Ì8/Ì/Ì89/Ì8/Ì22/3/39/33/39/39/39/39393939339310 76767&'7'67&'767!5!&'#' !5!67!5!!5!&'7#!#!!!36ûF˛J}X#)`RLlg.YçGÄqÉ˚=XTuX{â–ãKçÅbw=buQ.˛âﬁ˝ÒG]Vfb\Hf^˛g?å+D(L*OEÇ˝ÚD˚fj&N=èRûB Oo˛Ô˝É/˛G>·?ÀNÊhYFRBeE2@=Å?ÄKúò:pa@m+˛ËÁeF[îP>I0Wqã`˚¡RâX¸ËnZPZNff⁄»+OM@E`Lla˚ëbÜç3Õ˛3-u§™˛¸dãªÑ  	 ÅˇòVö     # 9 = A [Ó@.LOIYDDFIWWKUK'K')FGGRB[[R S%8)Ω0 A Oˇ O/¥N7@4+∏1≤,3/ª1 = <1≥0#∏1≤UR∏3≥S"∏1¥N	∏2@S0=,A∏2@&DYYFW$6)R62""#/
+RNOO2ªH : Iµ 48->&ªH ' H≤#ΩI ˇ  *I∂@@@=)A∏U≤++=∏H≤/
+∏J≥[[∏D≥BGG∏D≤FFQ∏I≥U∏E≤ WJ∏I@	K UB$∏J@K/' :]ªˇ D /Ì89/9Ì339/Ì2/Ì8/Ì3/Ì8/Ì8/Ì2/Ì3/Ï93/8Ì/8Ì2/Ì/Ì3322/Ì/Ì3/3399939399///////93 /Ì/9Ì29/Ì32/Ì2/Ì33/Ì/Ì2/Ì322/Ì8/Ì32/93/39/39/39/3933////9393910&'7#5!#!!!537#537!3#5#!#5!7#5!5!!#3#!5!5#&'#' !5!67)VX\Rvom¸ÑmVm¸Ñ;˝π"ó¥!dBR∫Ú%—˛e˛π(Sr˛—V¬··¥˛rÕ∂˛q5J/HN9mhfFFBp˛o˙;z!I.Õ>k`@o˘m``Œ˘ÚÆ˙RÏXtZq_Œtt¸çëë”Xj˛ÈjX}òff˛h}}
+e_6bLWx¸Ë˚m8O™ff˜¿ bU   ˇèëö    $ * D Z gE@KB--/@522@@0>ISea``ONN/004+IeUX[\\4%&&())Y"!!$ <48∫ˇ 8/¥7S++∏-≤DFXª2 Y 3≤$>;∏4∑<74^LGR∏3@<$YDU
+
+∏3@-BB/@X;$"D++3;788∏J¥ªE  !F≤"^fA	F c ˇ B  F≤EKAF H E  `ˇ `D a QF¥LLLG∏F≥V&&∏E≤%XUAG R )ˇ )D ( Nˇ NC O I  
+ˇ 
+D≥00∏B≤//:∏J≥>∏F≤ @3∏H@44O(RVaHc\\∏D@
+ >%"[[iªˇ F /Ì83/9Ì839/Ì2/Ì8/Ì3/Ì8/Ì8/Ì/Ì8/Ì8/Ì3/Ì8/Ì9/8Ì/Ì8/Ì/Ì2/Ì/Ì8/Ì9/Ì/Ì2/8Ì/3/339/399//93 /Ì2/3/9Ì32929/Ì2/Ì/Ì2/Ì82/Ì8/3/39/39/39/39/39/39/39/32/39/3999/32/32/3///9339310&'7!'!'67'67#'6%&'7&'#' !5!67%#33#'6#33#5!&' 4'35Xb^X}ï˚√RÆw˛/CDTE<EV.”)AHyFZ,˛9T:MPY˛ÑCFE4HXLfVfDLw˛d
+KÑ T/˜∫Z\¿(ÔI›'Æ`X¡◊˛O¢H?ÙNR^À@|S@o%¸Í˝Ê˛π</ˆx◊ìZ)iÇ˛ÓªÂ)•phk?»8yw%/qr1{˛FeKLHG|R¸‰j`OFfkk‡√#hIE˝˛s˛'˛∑ƒD™Ÿ˛ç^˚i>Í7˛‰˛?:#/0˝√  
+ ˇáâö     7 B F J N U∫@" ((33*1"##NE%55=77A /'=∫ˇ =1≥<SS∏1≤T9@A2 N M1 J +ˇ +/ * I0 F E1≤A∏1≥∏1≤1.∏4@//AFJNT'O∫ˇ O0∂<*Q∏1@' 55"3:.QOOTSSN:99??KN<==@&.*++CG8∏IµKªH 	 I≥FJN∏I¥@77∏E≥##∏D≤""-∏K≥1∏G≤ 3&∏H∑' 1∏I@'@	KWªˇ G /Ì89/9Ì29/Ì2/Ì8/Ì3/Ì8/Ì89/Ì22/Ì/Ì3322/Ì33/3/339/39339/33/3///93 /Ì323/99Ì839/Ì2/Ì32/Ì3/Ì/Ì/Ì8/Ì/Ì2/Ì8/Ì8/3/39/39/3939/3/93910&'7!5!5!!53!!!'5!#5!&'#' !5!67!'$7!!5!5!5!#&'7D]Nv^fö˚h˛H∏fª˛E≈˛¨f˛≤ºQ4T+RKpfOiHhi˛X:ë&F1˝T9π˛˘Lé˛ˆ›i¸ˆ
+¸ˆ
+¸ˆ€5
+–ƒ<ÈÕ>ef@R˝ƒ\qHpp˛∏q…òòòò˛Ny=`@F|j¸—ZbRFbhh≈€'\S˝>ÉsYqjœÀrr”}}—yy˛∂Vz>YQ   {ˇòV†       # ) B J N Rﬁ@B0;;29B*= 7	
+
+H/H/*++M-==D6@??6"$%%"'(("#"DQA	2 N 3ˇ 3. 2 M2≤I∏2≤#96∏3¥72"DF∏2@7#INR"∏2@B==*;663KOC∏I≥DAF  E  ˇ F  F  I≥ AF  %E $ (E ' 
+ˇ 
+G≥	NRGªI H #I≥++∏C≥*??∏C≤@@5∏I≥9∏G≤ ;.∏I@/ 9*$∏H@/H	' D	T233ªˇ G /Ì83/39/9Ì9/Ì2/Ì8/Ì3/Ì8/Ì8/Ì/Ì22/Ì8/Ì/Ì/Ì8/Ì/Ì/Ì8/Ì/Ì8/Ì333/93 /Ì23/3/9Ì29/Ì2/Ì3/Ì/Ì8/Ì/9/39/39/39/39/3939/322//9/39/39/39/39/399310&'7&'7%'67!!!'67!%&'7&'#' !5!67#5!#!5!5!N^Wr^p‚\Ci^[OR`XfJŸ˚›#f˛ã,KXB9˛–˛ÜV+EVG˛oLKqk|NFnu˛L5ò'G,L,O{k˝mkik˝mì˝m…8t_<g`;_e8VgW;`[¸~g˝¯™˛V?{è)rî˛ú™˛V^#|Ñ%w˝«Fm¸œ"à@MArbb“‘,_X@[c¸”ddÒ˛Ê∫∫˛Ì≤≤   ˇèèú   9 I _ @&8&&11(/%>^%=MLL=#33 >@^\ -==R∏2≤QQO∏4≥TTGA	2 D W3 X  ˇ  .≤!!)Aˇ )1 ( C3 @ [3 \ ˇ /¥56∫ˇ 0¥
+∏2≤/,∏4¥-(;∏2@-\@XDTH∏2@5TOVM833 1:BFW[,:BF<[/ WQQRR$!  ^$,)HD@<ªI = K∑VY]JΩH ^ L ˇ∂
+∏N≥
+
+L∫ˇ LD≥M55∏D≤66+∏J≥/∏F≤ 1$∏I@% /
+∏N∂%M^=	∏ˇ∑		a())ªˇ F /Ì83/39/89Ì2/329/Ì2/Ì8/Ì3/Ì8/Ì8/8Ì2/39/8Ì/Ì3/8Ì/Ì2/39/39/339939322/////////9399 /Ì2/9Ì99/Ì2/Ì322/Ì8323/Ì8/Ì/Ì/Ì83/Ì8/Ì/Ì/8Ì2/Ì3/3/39/399933/33///93910&'7$'#'67!5!67!5!!!!&'#' !5!67!#3!!!!!'67'6767!5!5!5!53D[mQXc©G˛Î}—™ıH¬§˛Õ}=,˛`∞˛b*8R˛æ\¸cDhajYh?TÉ˛L#OÑ#85P2G\É˛ºhh)˛◊˛¸D˝§˛ÕP§7àã zﬁ˛Ó˛œ1eœ@äC@U˝mR£ŒﬁàTR¿^`s``qb^í˝‹Lìe¸—h_Y<gii⁄√*I_;R\r˛M˛¯T∑dø`≤1˛1”Fs]38Qc¥d∑  	 qˇèìö     & * D ` d h@7II\\KZ582B--/2@@>44LLKK/00FO+DDXS T<	
+
+A	3  b1 h 8ˇ 8/≥7ZPOª3 X g1µc$*∏2≤VSª3 T )2≤&>;∏3≥<7#F∏2@<&TcXh_#∏2@-BB/@S;FEE\IIZK;	788	aA
+G e *H % hG b $H≤æF  RI V NI≥ZΩF   ˇ E≥XOK∫ˇ KD¥LSDD∏Dµ++>00∏C≤//:∏I≥>∏F≤@3∏I≤4!∏H@''> ZV
+∏F@4LOb%e	j
+ªˇ 
+F 	/Ì89/9Ì3/393/Ì3/Ì2/Ì8/Ì3/Ì83/Ì89/Ì8/3/Ì8/Ì8/Ì/Ì/Ì9/Ì/Ì/Ì/Ì3/33933/3//93 /Ì/9Ì9/Ì2/Ì/Ì2/Ì3/Ì/Ì32/Ì8/Ì/Ì33/33/39/39/39/39/32/39/93939939/10&'7&'7#'3265!#3!35!35#&'#' !5!67$'' #567#5!3!2!!5#È\TVÅ˛éZJ{Zgè<WÇ),É!˝»\1é1î˛:¢$¬¸ÕL@X.J\Tk7kIJb˛ÉÁ8ÇF7$˝º˛äi[vNTÊá_ÍRVwÕ+\b°vê˛¥L`éL3™•2ù:4cp8_˙˛BCf#y¸ÙmG˝π)¿˛)˛◊ÃÃñxHdDDÇ]¸‰FjQ8tccÃÊUb¸ZefèëÄD}PŸ◊cc…‘c∏æÅVhì˛«··  
+ ÉˇÖìû   3 9 ? E K [ ` pë@+$$//&-^ZZ`Xkccei@:I7!11* +#hh∏0≤ianA1 o Uˇ U1 T Lˇ L1 M ˇ .≤'∫ˇ '0≥&ORQΩ2 ` @ˇ @/¥A33I∫ˇ I/¥HFF∏-∂KXWWCCA. D 4ˇ 4. 5 =ˇ =/¥<<::∏.≥?77∏.≤8-*∏3≥+	∏1@+8?DK`oi	#e∫ˇ e/@
+5HA&MTf∏1@QQnckkei\`MQmnhT11/P*MLL?::X544KFF877fee""ihh"TUUm"*'PmmaDCCX<==^ZW∏F≥X
+∏IµHII∏I≥33∏D≤)∏J≥-∏D≤ /"∏I@# -XaA@@∏I@#r&''ªˇ D /Ì83/39/9Ì3/399/Ì2/Ì8/Ì3/Ì8/Ì92/3/Ì32/Ì323/33/3/3339/39/39/39/39/39/39/39/33/3////93999993// /Ì2/9Ì839/Ì32/Ì2/Ì8/Ì82/Ì8/Ì8/Ì82/3/Ì82/Ì89/3/Ì8/Ì39/Ì89/Ì8/Ì8/Ì8/Ì2/Ì8/3/39/3939993//9393910&'7#!#!#!5!5!!!&'#' !5!67%&'7'67&'7'67&'!5'$7&'&%767!5!?QQpNl{h˛wi˛whÒ˛BÁ˛@Ò˚ñ'Z9#FCXinZ>bo˛P9é$@7//cá)pi]ò'v~K+ÅÉ)ç˛eÅú+£zÒ/°ö˛ûî=àÿZ
+∫TèdÅ¨†ŸVqBÔ˛¿?áqó≥˝ûœDobB[˝Ω!˛∫F˛ﬂ}è\\è˛KyB/LcX¸—{NTErbbŒ⁄ Nc€L)#I8&N(˛P> L#)7%N#3˛
+X@XTZcEXÆÍ+¥F4ÄaS˛ﬂáÅ1NRß~T5:Fâ\ 
+ }ˇëÖû    / 3 7 ; ? X ^Û@(  ++")AV	
+]LLJZN\\PZ	2 '
+Q∫ˇ Q/≥PAGZ∏2≤EV∫ˇ .≤#∫ˇ #/µ"--CT∏2∂W//7;1∏1≥?6:>∏1≤2)&ª3 ' 3@'2?WEJ∫ˇ J1¥P"I∏3@&--+E\ZP\NNCPL]]YJ&1)PQQV&#0∏H¥4YGæI 	 7H 8 SM≥CC;∏H≤<æI  ?I 1 UJ≥V//∏D≤%∏I≥)∏Fµ IJJ+∏I@	 )CG@∏I@V1<8	4AA`"##ªˇ E /Ì83/39/9Ì29/Ì22/3/Ì8/Ì3/Ì8/Ì/Ì/Ì3/Ì/8Ì/Ì/Ì2/3/Ì/39/39/39//93939993 /Ì3/99Ì8339/Ì/Ì2/Ì22/Ì339/3/Ì293/Ì83/Ì83/Ì29/Ì8/33/39/3999393//////93910&'7!#3!#5!5!53&'#' !5!67!!5##5##5##5!!'$7&''$7!#!!6?\HxVpú˛hhÅ˝@g˛uãg˛++]T#G6rirPHQÄ˛ZCá&L1á¸Ùf…d—e¬∫h˛1'Z¸Ï˝gB≤ti7kD5é˛œmT˛¡˛Î∏Õ<ajB[ófMÖ»fbÖ¸ÙGuc/KPá¸”$ÖCR%ÉffËº'aR-r˛Ëææææææ˝˜◊Da_˛ñøXIa|U'7Nõœ◊4˛ü’s   Åˇèáö  , 0 6 : @ Z ` f l ro@NCKKVVMTnqnghh[\\dccjkkJqaaff^__JEFF;<<94339AZZ91669>??:9HXXQ RJN∫ˇ N2≥M*'∏1≥&0∏1≥:/#9∏1≤TQ∏3≥R"∏2≥∏2µMJ+∏1@R:∏0@$CXXEV!)Q)%[+ET	 QMNN%ªI - _G≥^66A	D 1 3ˇ 3D 4 hH≤ggk∏H@j'0#7+∏I≥	<<ªD ; nI≤mmqΩH p ?ˇ ?D≥>ffA	G a :J  cˇ cG≥dZZ∏D∂AATFF∏C≤EEP∏J≥T∏F≤ VI∏I@JJd>p	j4^-
+!\\∏F@
+ Ta;1[[tªˇ F /Ì83/9Ì8339/Ì2/Ì8/Ì3/Ì893/Ì8/Ì8/Ì/Ì8/Ì8/Ì2/Ì/Ì8/Ì32/Ì2/Ì/Ì8/Ì8/Ì/Ì/3/339999/39///////93 /Ì8/9Ì329/Ì22/Ì32/Ì2/Ì32/Ì32/Ì32/Ì8/3/39/3939/39/39/39/39/39/39/39/399/32/32/39/32//93910&'7!5!5!5!5!!5!5!5'$%!!!!!!!!%'67!%&'7&'#' !5!67&'7%'67&'7&'7?\SoZzå˚^#˛·˛Bæ˝˙•Ê1“‘9ë˛÷˝Ôø˛Aﬁ˛"¿˛©$IP85˛„˛ÆR'=R;˛kFAU*L=zhAÇ=N˛\?è)A:„\Uc^U¸»^g`{I†d+8eJ˛ﬂg*d2«:na>s˙¯\Å\o∏{`â
+^VT%$ò`{˛Ho\Å¶˛¸§3N55H’˛¸V+>G-?<tHi;F`Ü¸◊Py]éff›Õ)Rg˚˘/™ä-r:°};âé˛ üàæm§Éñ  	 }ˇsÉ†  ! % ) - 1 J e ri@-XNZL4<<GG>ElqqfjijjQ^bcc_9HH C;OUª1 T R1≤QQ[∫ˇ [0≥Zoo∏-µnL7d6^A2 _ ?ˇ ?/ > ˇ /≤∫ˇ /@2JJ ∏1≥-∏1≤1EB∏3≥C,%0∏2@))C1_n;f∫ˇ f0∑>ZTg$(∏1@?	qllfj	
+4HH6GK^Bnoo 
+
+*KgffQRRO^TUU:Z[[W:B>??j∏H@i-%.&ªH  `MµdddLc∏H≤bb]∏Q≥LLO∏I≤W)1∏H≥77∏B@	662JJªE 2 AI≥E∏D≤ G:∏I@	; E2L"∏H@;Wi**tªˇ D /Ì89/9Ì39/Ì9/Ì8/Ì/Ì89/39/Ì8/Ì2/Ì/8Ì9/Ì3/8Ì/Ì328/Ì3/339/39/3999/32/32/399933/3/////93993/ /Ì2/9Ì839/Ì32/Ì2/Ì32/Ì3289/3/Ì83/Ì8/Ì8/Ì3322/Ì8/Ì89/Ì/Ì2/3/39/3939/339/3/939399910&'7&'7##5'67!5!5!!!!!5!#5!5!#5!&'#' !5!67!67'655'$7!5!&'7!$767POxNcæ<µÊ-ef·ËL˙ú˛è˛që˛d˛T˛ f˛◊≈˛ f˛◊„4V[$E.óhiIF;q˛}Ì=ÅP^ ˝öfî¿Ñı≈'Ök?Iπ˛ôÍ!fHı=˛©∂c#KrÄFM£v«FrkBT¸}PrkJÏ◊ YP`à\X˝ÙX\jyyyy€{{{{˛À]jf1D=§¸◊ÑMNOiee—”GÖ9˛l\ËA8\i5\∞>$Vl¶_A#}˝∞V¨=%KU0nHCXu  ˇó†û    7 ? C xl@AGVV[[PdrwwDp]bbPddppfn ((33*19=	"##`f%55gj77k;	> /'YAˇ Y0 X `ˇ `1 _ +ˇ +. * gˇ g0≥fuu∏/≤tnj∏1≥k9=Aª1 B ;1≤>1.∏4≥/Ω1  Dˇ D.@EEPf*_X'MNK∏4@/>BktPP∏1@T@NAb]][d@9pAi<NT_ 55"3mj.EDD8dppii9<=1tuu8&jffgg&#""8&rww[[&_``&XYYT&.+∏I≤VG∏I≥TªH 	 <H≥=77∏D≤-∏J≥1∏E≤ 3&∏I∂'1 m8∏H@'=	T99z*++ªˇ F /Ì83/39/9Ì2299/Ì2/Ì8/Ì3/Ì8/Ì/Ì32/Ì3/Ì32/39/39/39399/39/399/39939993/3//////9399993/// /Ì3233/39Ì32299/Ì8/Ì32/Ì2/Ì/Ì22/Ì2/Ì8/Ì8/Ì8/Ì8/Ì8/3/39/3999/3939/3//////93993939393310&'7##5!5!533!#5#5353!&'#' !5!67%#5!#!!5!&'#"''326654''$%&''$7&''$7!5!!67FVef\|&âe˛eâb˛Úiáái˚y5LS*JFtkh`DcÄ˛D)LÅ"L+¨f¸ƒf—˝öfH›èl|)'0IAU.˛¸˛ú8Ü‡˛´7kÿ3ΩÌ3,´˛<d˛ 7]3ºí9é–ó√@ÄYBv~VVZèèZVVZçç˝É]c`HJq{¸›vDI,~iiŒ’#aV)””+˛ÂZ˚«LáÆΩy=jCk$πàTãÕJ5ôsXlú20w9TPwZZ+	V£coOjiÿ  ãˇÖÅò  - A T j Ü ìF@?xnzl`ETTGROJJHQ ëââãèÇÉÉ_ 	 `BCC`5::3<?002=.AA*ouª1 t r3≤qq{∫ˇ {1≥zéé∏.¥èáììU∫ˇ U2≤VV\∫ˇ \0≥[lÖ~∏1¥iYf_∏1¥`dccHAˇ H- G $ˇ $/ # ˇ .≥LL∏,@M!∏-≥8∫ˇ 8-∂773RQQ2∫ˇ 2,≥3∏0≥,'∏0@((M`è=ã∫ˇ ã.@3#G[ztå*<<∏-@X=rrëokkââëëãèTOOBM055.7:??A8tuu$z{{w$~'_CBB	RìááÖåãã o=<<A788QMLLc'_$h∏G¥VUUiøO Xˇ X ˇ A¥	AA∏B∂.322QQ∏A¥RèééÄ∏K@ÖÖGHHJEccªF d ÉH≤ÇÇ}∏S≥llf∫P aˇ∂aaY[\\^∏T¥YY~o∏I@ww	X h∏B@YldÖR.  ï#$$&,)&πG  /Ì332283/33/9Ì8339/Ì3/8Ì2/39/8Ì/8Ì9/Ì/Ì8322/3/8Ì9/3/Ì89/3/Ì83/Ì8/8Ì2/3/Ì33228/339/39/39/339/39/39/39/3//////9/39/3939393933/9/ /Ì83/9Ì89/Ì32/Ì32/Ì83/33/Ì8/8Ì28/8Õ28/Ì8/Ì8/Ì8/Ì89/3/Ì322/Ì32/Ì83/Ì89/3/Ì8/Ì89/Ì/Ì2/39/393939/39/39/399/393//93939/9910&'#'67#5!533#%#&'#'67#5!533%&''67&'767&''67&'767$'!'$7!5!67!!!6%'655'$7!5!&'7!$%767ÅFUw_céB∫P›_ıı¬˚ËÍi^>T5^å|>öÉÍ^Í’:T$?<@0tG7y'F;5u"LN-=FHfs9ö10?7V/J5BD7%;˛S•˛ã‚˛H?MÍ˝—û+E\$ï˛’g˛}∏Ü.˛vñ)€â7ƒŸ˛…«Bd#IÙàê≥_F˛Ë˛º<U¢óòm@in˛øãöÖ;πáTööT5†’3GaJb%˛ªj±iOyÀTööd?F5A5JD<,EC-Y˝p=L9;6FE**B;(/63D%˝d`—√«®Tn≠X&S.*!XøôrWÚfbÉ\#®K \e§XBh1ì√kG|YLÙ∞L.f?~  }ˇçè¶   ( A c g k o s w {?@-25?++,/==1;',--SV)AAsjW 9'1bG_{N∏0µO^z[wRΩ1 S 5ˇ 5/¥4ZvoV∏0≥sngr∏1≤kfj∏1¥W	ª2   1≤∏1¥"";8A	3 9 2 ˇ  $1≤%1B∫ˇ B.@CCJ%9"WksSO	K∫ˇ K/µ4J∏/@*a]EH$RN8]Y$  V;aCCBB+??=,0NJK8455dY∏H∂lE[btF_∏H≤x∏G≥gho∏I≥p&"∏H∑wGHMT{∏I≤Pks∏I¥VR--∏C¥,,AAªD ) 7I≥;∏F¥ JKK0∏H@
+1 ;)∏F@1VPpxl}ªˇ F /Ì89/9Ì9/39/Ì2/3/Ì8/Ì/Ì89/Ì89/Ì2/Ì332/Ì33/Ì32/Ì2/Ì33223/Ì33/3399933/399/339//////// /Ì8/99Ì899/Ì83/Ì/8Ì/Ì2/8Ì2/Ì/Ì3/3/Ì2/Ì32/Ì322/Ì8/Ì3322/Ì3322/3/39/399/39/3///9393910&'7#"&53673267'5'675!5!53&'#' !5!67&'7!'67!5!5!5!5#!#3#!!5!#5!5!#5!5!5!1X_t\]∆`ôôS^çî-ÇÃ#∂R˝¥b•ƒ ˝å˛údb˛//RIiybGoJpY˛X-}3?3’=⁄ 3˛¨4˛„¥>∑˘˛Xc˛’+ø∂ƒ˛˛3˛ãÀ+˛¡i˛√Â˛¡i˛√#˛ôg˛ôœ<ra@RÏmA8KY§DR</Q'	i·'!Z"íX{¸˚cvèHÖs¸«ÎD`N¨bb”‹3Yn¸L~GF:õ8R6ÖVïXÖ˝˙ÖXïVNG}}}}€ÉÉÉÉ€ÖÖÌïï  {ˇèÖú      ' + / 3 L R X y Ä∫@?\\^{>A;J668;II=Gaff_kvuuSTTpoo%
+
+%MNNl%"!!8% E&&=Z{xrkΩ0 l Aˇ A/≤@@8∫ˇ 8/µ9VWW∏1@	PQQ4LL%æ1 3 0  20≤/GDA
+3 E 0  .0 + 1≤=^∫ˇ ^0@__c+E/3l&d∏2≤9c*∏1@:&P\aaZcfzd6JJ8IkDr{{p}jmmoh$$P3_^^Y<k988"<D@AAYA	H  Wˇ WD V uF¥vvsxzªK Z D≥
+∫ˇ 
+C≤∏ˇ¥∏H≥NNªD M oG≥p(,AG 0 Qˇ QC P }U hˇ h !ˇ !D¥""+/3∏G≥%LL∏C≤44C∏J≥G∏Fµ cddI<∏H@==%hP0VYTT∏C@ GpMZSSÇªˇ E /Ì83/9Ì839/Ì22/3/Ì8/Ì3/Ì8/Ì223/Ì8/8Ì/Ì8/Ì33/Ì/Ì8/Ì283/Ì8/8Ì/Ì323/Ì/Ì8/Ì33/3/339/339/3939393//9393939/ /Ì/9Ì393/Ì83/Ì/Ì/Ì/Ì2/Ì/Ì/Ì22/32/3/Ì22/3/Ì83/Ì8/Ì3322/3/39/39/39/39/39/39/39/393939399310&'7!'67#!5!5!5!!'67#!5!5!5!&'#' !5!67&'7&'7!&%'$7&'67!5!67!673!6/ZZ\To[˛ø;MyJ}AÉ€b˛Í˛Í˛Í—˛¿8DyNuB{◊a˛Í˛Í˛Íë8N!@BMWb]fAPy˛dFx1@?jN3\J‚LXmRrY˛ÍLy
+î>¶˛ˆ˚˛©-;”èÙa5˛·b4=^'-m!ZÚ˛y˛}Yﬂ[                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <?php
+
+/*
+ * This file is part of Twig.
+ *
+ * (c) Fabien Potencier
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Twig\Node\Expression;
+
+use Twig\Compiler;
+use Twig\Node\Node;
+
+class TestExpression extends CallExpression
+{
+    public function __construct(Node $node, string $name, ?Node $arguments, int $lineno)
+    {
+        $nodes = ['node' => $node];
+        if (null !== $arguments) {
+            $nodes['arguments'] = $arguments;
+        }
+
+        parent::__construct($nodes, ['name' => $name], $lineno);
+    }
+
+    public function compile(Compiler $compiler): void
+    {
+        $name = $this->getAttribute('name');
+        $test = $compiler->getEnvironment()->getTest($name);
+
+        $this->setAttribute('name', $name);
+        $this->setAttribute('type', 'test');
+        $this->setAttribute('arguments', $test->getArguments());
+        $this->setAttribute('callable', $test->getCallable());
+        $this->setAttribute('is_variadic', $test->isVariadic());
+
+        $this->compileCallable($compiler);
+    }
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Ÿ’˘ °c◊ˇˇˇˇœgÍÛ  'Œ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &Ä                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            # co
+
+[![Gitter][gitter-image]][gitter-url]
+[![NPM version][npm-image]][npm-url]
+[![Build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Downloads][downloads-image]][downloads-url]
+
+  Generator based control flow goodness for nodejs and the browser,
+  using promises, letting you write non-blocking code in a nice-ish way.
+
+## Co v4
+
+  `co@4.0.0` has been released, which now relies on promises.
+  It is a stepping stone towards [ES7 async/await](https://github.com/lukehoban/ecmascript-asyncawait).
+  The primary API change is how `co()` is invoked.
+  Before, `co` returned a "thunk", which you then called with a callback and optional arguments.
+  Now, `co()` returns a promise.
+
+```js
+co(function* () {
+  var result = yield Promise.resolve(true);
+  return result;
+}).then(function (value) {
+  console.log(value);
+}, function (err) {
+  console.error(err.stack);
+});
+```
+
+  If you want to convert a `co`-generator-function into a regular function that returns a promise,
+  you now use `co.wrap(fn*)`.
+
+```js
+var fn = co.wrap(function* (val) {
+  return yield Promise.resolve(val);
+});
+
+fn(true).then(function (val) {
+
+});
+```
+
+## Platform Compatibility
+
+  `co@4+` requires a `Promise` implementation.
+  For versions of node `< 0.11` and for many older browsers,
+  you should/must include your own `Promise` polyfill.
+
+  When using node 0.11.x or greater, you must use the `--harmony-generators`
+  flag or just `--harmony` to get access to generators.
+
+  When using node 0.10.x and lower or browsers without generator support,
+  you must use [gnode](https://github.com/TooTallNate/gnode) and/or [regenerator](http://facebook.github.io/regenerator/).
+
+  io.js is supported out of the box, you can use `co` without flags or polyfills.
+
+## Installation
+
+```
+$ npm install co
+```
+
+## Associated libraries
+
+Any library that returns promises work well with `co`.
+
+- [mz](https://github.com/normalize/mz) - wrap all of node's code libraries as promises.
+
+View the [wiki](https://github.com/visionmedia/co/wiki) for more libraries.
+
+## Examples
+
+```js
+var co = require('co');
+
+co(function *(){
+  // yield any promise
+  var result = yield Promise.resolve(true);
+}).catch(onerror);
+
+co(function *(){
+  // resolve multiple promises in parallel
+  var a = Promise.resolve(1);
+  var b = Promise.resolve(2);
+  var c = Promise.resolve(3);
+  var res = yield [a, b, c];
+  console.log(res);
+  // => [1, 2, 3]
+}).catch(onerror);
+
+// errors can be try/catched
+co(function *(){
+  try {
+    yield Promise.reject(new Error('boom'));
+  } catch (err) {
+    console.error(err.message); // "boom"
+ }
+}).catch(onerror);
+
+function onerror(err) {
+  // log any uncaught errors
+  // co will not throw any errors you do not handle!!!
+  // HANDLE ALL YOUR ERRORS!!!
+  console.error(err.stack);
+}
+```
+
+## Yieldables
+
+  The `yieldable` objects currently supported are:
+
+  - promises
+  - thunks (functions)
+  - array (parallel execution)
+  - objects (parallel execution)
+  - generators (delegation)
+  - generator functions (delegation)
+
+Nested `yieldable` objects are supported, meaning you can nest
+promises within objects within arrays, and so on!
+
+### Promises
+
+[Read more on promises!](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+### Thunks
+
+Thunks are functions that only have a single argument, a callback.
+Thunk support only remains for backwards compatibility and may
+be removed in future versions of `co`.
+
+### Arrays
+
+`yield`ing an array will resolve all the `yieldables` in parallel.
+
+```js
+co(function* () {
+  var res = yield [
+    Promise.resolve(1),
+    Promise.resolve(2),
+    Promise.resolve(3),
+  ];
+  console.log(res); // => [1, 2, 3]
+}).catch(onerror);
+```
+
+### Objects
+
+Just like arrays, objects resolve all `yieldable`s in parallel.
+
+```js
+co(function* () {
+  var res = yield {
+    1: Promise.resolve(1),
+    2: Promise.resolve(2),
+  };
+  console.log(res); // => { 1: 1, 2: 2 }
+}).catch(onerror);
+```
+
+### Generators and Generator Functions
+
+Any generator or generator function you can pass into `co`
+can be yielded as well. This should generally be avoided
+as we should be moving towards spec-compliant `Promise`s instead.
+
+## API
+
+### co(fn*).then( val => )
+
+Returns a promise that resolves a generator, generator function,
+or any function that returns a generator.
+
+```js
+co(function* () {
+  return yield Promise.resolve(true);
+}).then(function (val) {
+  console.log(val);
+}, function (err) {
+  console.error(err.stack);
+});
+```
+
+### var fn = co.
