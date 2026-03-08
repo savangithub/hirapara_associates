@@ -1,4 +1,6 @@
 <?php
+define("BASE_URL", "http://localhost/hirapara/admin/");
+
 $servername = "localhost";  // or 127.0.0.1
 $username = "root";         // MySQL username
 $password = "";             // MySQL password (XAMPP default is empty)
@@ -10,5 +12,6 @@ die();
 if ($conn->connect_error) {
     die("❌ Connection failed: " . $conn->connect_error);
 }
+
 echo "✅ Connected successfully";
 ?>

@@ -1,6 +1,7 @@
 <?php
+// include_once('../admin/layout_admin/header.php');
 include_once('../admin/layout_admin/header.php');
-session_start();
+// session_start();
 
 ?>
 <!DOCTYPE html>
@@ -23,35 +24,36 @@ session_start();
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="../image/Logo.svg" alt="logo">
+                                <img src="../admin/assets/images/1.jpg" alt="logo">
                             </div>
                             <h4>Login</h4>
-                            <!-- <img src="../../assets/images/logo.svg" alt="logo"> -->
-                            <form class="pt-3">
+                            <form class="pt-3" id="loginForm">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
+                                    <input type="text" class="form-control form-control-lg" id="email" name="email"
                                         placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg"
-                                        id="exampleInputPassword1" placeholder="Password">
+                                        id="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="mt-3 d-grid gap-2">
-                                    <a class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn"
-                                        href="../../index.html">SIGN IN</a>
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn">
+                                        SIGN IN
+                                    </button>
                                 </div>
-                                <!-- <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
+                             
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    <!-- <div class="form-check">
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input"> Keep me signed in </label>
-                                    </div>
+                                    </div> -->
                                     <a href="#" class="auth-link text-black">Forgot password?</a>
-                                </div> -->
-                                <!-- <div class="mb-2 d-grid gap-2">
-                                    <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                                        <i class="ti-facebook me-2"></i>Connect using facebook </button>
-                                </div> -->
-                                <!-- <div class="text-center mt-4 fw-light"> Don't have an account? <a href="register.html"
+                                </div> 
+                                 <div class="mb-2 d-grid gap-2">
+                                    <button type="button" class="btn btn-block btn-google auth-form-btn">
+                                        <i class="ti-google me-2"></i>Connect using google </button>
+                                </div> 
+                                 <!-- <div class="text-center mt-4 fw-light"> Don't have an account? <a href="register.html"
                                         class="text-primary">Create</a>
                                 </div> -->
                             </form>
@@ -79,6 +81,55 @@ session_start();
     <script src="../admin/assets/js/hoverable-collapse.js"></script>
     <script src="../admin/assets/js/todolist.js"></script>
     <!-- endinject -->
+    <script>
+
+$("#loginForm").submit(function(e){
+
+    e.preventDefault();
+
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    $.ajax({
+        url: BASE_URL + "api/api.php",
+        type: "POST",
+        data: {
+            email: email,
+            password: password
+        },
+        dataType: "json",
+        success: function(response){
+
+            if(response.status == "success"){
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: 'Redirecting...',
+                    timer: 1500,
+                    showConfirmButton: false
+                }).then(function(){
+
+                    window.location.href = "../admin/dashboard.php";
+
+                });
+
+            }else{
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Invalid Email or Password'
+                });
+
+            }
+
+        }
+    });
+
+});
+
+</script>
 </body>
 
 </html>
