@@ -1,5 +1,4 @@
 <?php
-// require_once('../config.php');
 require_once('../admin/config.php');
 ?>
 
@@ -80,8 +79,9 @@ require_once('../admin/config.php');
 <!-- Custom js for this page-->
 <script src="../admin/assets/js/jquery.cookie.js" type="text/javascript"></script>
 <script src="../admin/assets/js/dashboard.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 var BASE_URL = "<?php echo BASE_URL; ?>";
+
 </script>
 </html>
