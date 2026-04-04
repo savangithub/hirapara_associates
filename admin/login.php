@@ -1,5 +1,4 @@
 <?php
-// include_once('../admin/layout_admin/header.php');
 include_once('../admin/layout_admin/header.php');
 // session_start();
 
@@ -28,6 +27,8 @@ include_once('../admin/layout_admin/header.php');
                             </div>
                             <h4>Login</h4>
                             <form class="pt-3" id="loginForm">
+                            <input type="hidden" name="action" value="login">
+
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="email" name="email"
                                         placeholder="Username">
@@ -82,26 +83,22 @@ include_once('../admin/layout_admin/header.php');
     <script src="../admin/assets/js/todolist.js"></script>
     <!-- endinject -->
     <script>
-
 $("#loginForm").submit(function(e){
-
     e.preventDefault();
 
-    var email = $("#email").val();
-    var password = $("#password").val();
+    // Add the action field to the formData
+    var formData = new FormData(this);
+    formData.append("action", "login"); // Required by your PHP API
 
     $.ajax({
         url: BASE_URL + "api/api.php",
         type: "POST",
-        data: {
-            email: email,
-            password: password
-        },
+        data: formData,
+        processData: false,  // Important for FormData
+        contentType: false,  // Important for FormData
         dataType: "json",
         success: function(response){
-
             if(response.status == "success"){
-
                 Swal.fire({
                     icon: 'success',
                     title: 'Login Successful',
@@ -109,9 +106,9 @@ $("#loginForm").submit(function(e){
                     timer: 1500,
                     showConfirmButton: false
                 }).then(function(){
-
-                    window.location.href = "../admin/dashboard.php";
-
+                    window.location.href = BASE_URL + "dashboard.php";
+                    // C:\wamp64\www\hirapara\admin\dashboard.php
+                    // window.location.href = "../admin/dashboard.php";
                 });
 
             }else{
@@ -119,17 +116,25 @@ $("#loginForm").submit(function(e){
                 Swal.fire({
                     icon: 'error',
                     title: 'Login Failed',
-                    text: 'Invalid Email or Password'
+                    text: response.message || 'Invalid Email or Password'
                 });
 
             }
 
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX Error:", status, error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong',
+                text: 'Please try again later.'
+            });
         }
     });
 
 });
-
 </script>
+
 </body>
 
 </html>
