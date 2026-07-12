@@ -1,7 +1,7 @@
 <?php
-include_once('../admin/layout_admin/header.php');
-session_start();
-if (!isset($_SESSION['user_id'])) {
+require_once('../admin/config.php');
+
+if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit;
   }
